@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react";
 import {
   RiBuilding4Line,
   RiDashboardLine,
@@ -8,102 +8,108 @@ import {
   RiAlertFill,
   RiLogoutBoxLine,
   RiHome3Line,
-  RiHome3Fill
-} from 'react-icons/ri';
+} from "react-icons/ri";
+import { Link, NavLink } from "react-router-dom";
 
-// box-shadow: 0 0 0 100vmax var(--secondary);
-//   clip-path: inset(0 -100vmax);
-import { Link, useNavigate } from 'react-router-dom';
+const links = [
+  {
+    name: "Escritorio",
+    to: "/",
+    icon: <RiDashboardLine />,
+  },
+  {
+    name: "Gastos y expensas",
+    to: "/expenses",
+    icon: <RiWallet2Line />,
+  },
+  {
+    name: "Espacios comunes",
+    to: "/amenities",
+    icon: <RiCommunityFill />,
+  },
+  {
+    name: "Mensajes",
+    to: "/message",
+    icon: <RiMessage3Line />,
+  },
+  {
+    name: "Reportes",
+    to: "/request",
+    icon: <RiAlertFill />,
+  },
+];
+
 export default function Sidebar() {
-  const [menuIsOpen, setMenuIsOpen] = useState(false)
+  const [menuIsOpen, setMenuIsOpen] = useState(false);
   const openMenu = () => {
-    setMenuIsOpen(!menuIsOpen)
+    setMenuIsOpen(!menuIsOpen);
     if (!menuIsOpen) {
-      document.body.style.overflow = 'hidden'
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = 'scroll'
+      document.body.style.overflow = "scroll";
     }
-  }
+  };
 
+  const navLinkCssClasses = ({ isActive }: { isActive: boolean }): string => {
+    return `flex items-center rounded-lg text-lg font-bold py-2 border-2 border-transparent hover:border-[#C9E6FD] hover:border-2 hover:rounded-lg text-start ${
+      isActive ? "bg-[#C9E6FD]" : ""
+    }`;
+  };
 
   return (
-    <div className='text-black-navbar '>
-      <div className='bg-white shadow-[0_0_0_100vmax_rgba(255,255,255,1)] clip-path 1048:hidden'>
-        <div className='w-full flex justify-between flex-row-reverse py-2 '>
-          <h2 className="flex flex-row gap-4 text-center uppercase font-bold tracking-[4px] items-center">
-            <RiBuilding4Line className='text-[2.5rem]' />
+    <div className="text-black-navbar 1048:w-80">
+      <div className="clip-path bg-white shadow-[0_0_0_100vmax_rgba(255,255,255,1)] 1048:hidden">
+        <div className="flex max-w-sm flex-row-reverse justify-between py-2 ">
+          <h2 className="flex flex-row items-center gap-4 text-center font-bold uppercase tracking-[4px]">
+            <RiBuilding4Line className="text-[2.5rem]" />
             liveto
           </h2>
-          <button onClick={openMenu} className='bg-blue-400 '><RiHome3Line className='text-[2.5rem]' /></button>
+          <button onClick={openMenu} className="bg-blue-400 ">
+            <RiHome3Line className="text-[2.5rem]" />
+          </button>
         </div>
-      </div >
-      <nav className={`bg-white w-full flex fixed h-screen flex-col justify-between overflow-auto list-none ${menuIsOpen ? 'right-0 ease-in-out duration-500' : 'right-full  ease-in-out duration-500 '} top-0 1048:relative 1048:right-0 `}>
-        <div className='w-full flex justify-between flex-row-reverse px-6 450:px-12 sm:px-[20%] py-2 1048:justify-center'>
-          <h2 className="flex flex-row gap-4 text-center uppercase font-bold tracking-[4px] items-center">
-            <RiBuilding4Line className='text-[2.5rem]' />
+      </div>
+      <nav
+        className={`min-w-80 fixed flex h-screen w-full list-none flex-col justify-around overflow-auto bg-white p-4 shadow-lg ${
+          menuIsOpen
+            ? "right-0 duration-500 ease-in-out"
+            : "right-full  duration-500 ease-in-out "
+        } top-0 1048:relative 1048:right-0 `}
+      >
+        <div className="flex w-full basis-1/5 flex-row-reverse items-start justify-between px-6 py-2 450:px-12 sm:px-[20%] 1048:justify-center">
+          <h2 className="flex flex-row items-center gap-4 text-center text-2xl font-bold uppercase tracking-[4px]">
+            <RiBuilding4Line className="text-[2.5rem] font-bold" />
             liveto
           </h2>
-          <button onClick={openMenu} className='bg-blue-400 1048:hidden '><RiHome3Line className='text-[2.5rem]' /></button>
+          <button onClick={openMenu} className="bg-blue-400 1048:hidden ">
+            <RiHome3Line className="text-[2.5rem]" />
+          </button>
         </div>
-        <ul className=' h-4/6 flex items-center flex-col gap-8 py-8 px-4 justify-between 1048:items-start'>
-          <li>
-            <Link className="flex items-center font-semibold hover:bg-background-blue hover:font-bold rounded-lg transition-colors text-2xl"
-              to='/'
-              onClick={openMenu}
-            >
-              <RiDashboardLine className='mx-6 text-[2rem]' />
-              <p>Escritorio</p>
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/expenses"
-              className="flex items-center gap-4 font-semibold hover:bg-background-blue hover:font-bold rounded-lg transition-colors text-2xl" onClick={openMenu}
-            >
-              <RiWallet2Line className='mx-6 text-[2rem] ' />
-              Gastos y expensas
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/amenities"
-              className="flex items-center gap-4 font-semibold hover:bg-background-blue hover:font-bold rounded-lg transition-colors text-2xl" onClick={openMenu}
-            >
-              <RiCommunityFill className='mx-6 text-[2rem]' />
-              Espacios comunes
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/message"
-              className="flex items-center gap-4 font-semibold hover:bg-background-blue hover:font-bold rounded-lg transition-colors text-2xl" onClick={openMenu}
-            >
-              <RiMessage3Line className='mx-6 text-[2rem]' />
-              Mensajes
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/request"
-              className="flex items-center gap-4 font-semibold hover:bg-background-blue hover:font-bold rounded-lg transition-colors text-2xl" onClick={openMenu}
-            >
-              <RiAlertFill className='mx-6 text-[2rem]' />
-              Reportes
-            </Link>
-          </li>
+        <ul className=" w-70 flex h-4/6 basis-2/5 flex-col items-center justify-around">
+          {links.map((link) => (
+            <li key={link.name} className="m-auto min-w-[80%]">
+              <NavLink
+                className={navLinkCssClasses}
+                to={link.to}
+                onClick={openMenu}
+              >
+                <div className="mx-3 text-lg">{link.icon}</div>
+                <p>{link.name}</p>
+              </NavLink>
+            </li>
+          ))}
         </ul>
-        <div>
+        <div className="flex w-full basis-2/5 items-center justify-start gap-8  1048:items-end ">
           <Link
             to="/login"
-            className="flex justify-center items-center gap-4 font-semibold hover:bg-background-blue hover:font-bold rounded-lg transition-colors text-2xl px-4 1048:justify-start" onClick={openMenu}
+            className="flex min-w-[80%] items-center rounded-lg border-2 border-transparent py-2 text-lg font-bold selection:bg-[#C9E6FD]  hover:rounded-lg hover:border-2 hover:border-[#C9E6FD]"
+            onClick={openMenu}
           >
-            <RiLogoutBoxLine className='mx-6 text-[2rem]' />
+            <RiLogoutBoxLine className="mx-3 text-lg" />
             Salir de cuenta
           </Link>
         </div>
       </nav>
-    </div >
-
-
-  )
+    </div>
+  );
 }

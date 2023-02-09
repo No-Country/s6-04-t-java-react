@@ -9,7 +9,8 @@ import {
   RiLogoutBoxLine,
   RiHome3Line,
 } from "react-icons/ri";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/authContext";
 
 const links = [
   {
@@ -40,6 +41,8 @@ const links = [
 ];
 
 export default function Sidebar() {
+  const navigate = useNavigate();
+  const { isUserLogged, setIsUserLogged } = useAuth();
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const openMenu = () => {
     setMenuIsOpen(!menuIsOpen);
@@ -101,9 +104,11 @@ export default function Sidebar() {
         </ul>
         <div className="flex w-full basis-2/5 items-center justify-start gap-8  1048:items-end ">
           <Link
-            to="/login"
+            to="/"
             className="flex min-w-[80%] items-center rounded-lg border-2 border-transparent py-2 text-lg font-bold selection:bg-[#C9E6FD]  hover:rounded-lg hover:border-2 hover:border-[#C9E6FD]"
-            onClick={openMenu}
+            onClick={() => {
+              setIsUserLogged(false);
+            }}
           >
             <RiLogoutBoxLine className="mx-3 text-lg" />
             Salir de cuenta

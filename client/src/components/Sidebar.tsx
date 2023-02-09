@@ -108,6 +108,7 @@ export default function Sidebar() {
             className="flex min-w-[80%] items-center rounded-lg border-2 border-transparent py-2 text-lg font-bold selection:bg-[#C9E6FD]  hover:rounded-lg hover:border-2 hover:border-[#C9E6FD]"
             onClick={() => {
               setIsUserLogged(false);
+              localStorage.setItem("isUserLogged", "");
             }}
           >
             <RiLogoutBoxLine className="mx-3 text-lg" />

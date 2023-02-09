@@ -12,10 +12,11 @@ const Login = () => {
     if (isUserLogged) {
       navigate("/home");
     }
-  }, []);
+  }, [isUserLogged]);
 
   const login = () => {
     setIsUserLogged(true);
+    localStorage.setItem('isUserLogged','true')
     navigate("/home");
   };
 

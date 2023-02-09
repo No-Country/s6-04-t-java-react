@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Request, Home, Login } from "./pages/index";
 import { BrowserRouter, HashRouter, Route, Routes } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "./hooks/reduxHooks";
@@ -14,6 +14,15 @@ import PrivateLayout from "./layouts/PrivateLayout";
 
 function App() {
   const [isUserLogged, setIsUserLogged] = useState(false);
+  const verifyUserFromLocalStorage = () => {    
+    return localStorage.getItem("isUserLogged") === "true";
+  };
+  useEffect(() => {
+    if (verifyUserFromLocalStorage()) {
+      setIsUserLogged(true);
+    }
+  }, []);
+
   return (
     <AuthContext.Provider value={{ isUserLogged, setIsUserLogged }}>
       <BrowserRouter>

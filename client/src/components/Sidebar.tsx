@@ -57,7 +57,7 @@ export default function Sidebar() {
   };
 
   return (
-    <div className="text-black-navbar 1048:w-80">
+    <div className="text-black-navbar 1048:w-70 2xl:w-80">
       <div className="clip-path bg-white shadow-[0_0_0_100vmax_rgba(255,255,255,1)] 1048:hidden">
         <div className="flex max-w-sm flex-row-reverse justify-between py-2 ">
           <h2 className="flex flex-row items-center gap-4 text-center font-bold uppercase tracking-[4px]">

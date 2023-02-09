@@ -1,7 +1,7 @@
 import "./App.css";
 import { useState } from "react";
 import { Request, Home, Login } from "./pages/index";
-import { HashRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, HashRouter, Route, Routes } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "./hooks/reduxHooks";
 import { increment } from "./store/slices/counter.slice";
 import ExpensesHistory from "./pages/expenses/ExpensesHistory";
@@ -15,8 +15,8 @@ import PrivateLayout from "./layouts/PrivateLayout";
 function App() {
   const [isUserLogged, setIsUserLogged] = useState(false);
   return (
-    <HashRouter>
-      <AuthContext.Provider value={{ isUserLogged, setIsUserLogged }}>
+    <AuthContext.Provider value={{ isUserLogged, setIsUserLogged }}>
+      <BrowserRouter>
         <Routes>
           <Route path="/" element={<Login />} />
           <Route element={<PrivateLayout />}>
@@ -27,8 +27,8 @@ function App() {
             <Route path="/home" element={<Home />} />
           </Route>
         </Routes>
-      </AuthContext.Provider>
-    </HashRouter>
+      </BrowserRouter>
+    </AuthContext.Provider>
   );
 }
 

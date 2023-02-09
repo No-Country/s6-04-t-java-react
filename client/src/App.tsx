@@ -9,6 +9,7 @@ import AmenitiesInfo from './pages/amenities/AmenitiesInfo';
 import MessageHistory from './pages/message/MessageHistory';
 import MenuLogin from './pages/login/MenuLogin';
 import NewUser from './pages/login/NewUser';
+import Main from './pages/main/Main';
 
 
 
@@ -24,6 +25,7 @@ function App() {
           <UserInfo />
           <Routes>
             <Route path='/' element={<Login />} />
+            <Route path='/main' element={<Main />} />
             <Route path='/request' element={<Request />} />
             <Route path='/expenses' element={<ExpensesHistory />} />
             <Route path='/amenities' element={<AmenitiesInfo />} />

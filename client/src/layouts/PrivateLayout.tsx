@@ -10,8 +10,8 @@ const PrivateLayout = () => {
     return (
       <div className='flex flex-col justify-center items-center h-screen'>
         <div className="flex flex-col justify-center items-center">
-          <div>No estás autorizado</div>
-          <button onClick={() => navigate("/")}>Iniciar sesión</button>
+          <div className="text-white font-bold text-4xl">No estás autorizado</div>
+          <button className='bg-indigo-700 text-white font-bold text-lg py-3 px-6 rounded-full hover:bg-indigo-500 shadow-md my-2 disabled:opacity-50 disabled:bg-gray-700' onClick={() => navigate("/")}>Iniciar sesión</button>
         </div>
       </div>
     );

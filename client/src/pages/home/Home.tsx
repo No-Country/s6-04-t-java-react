@@ -1,6 +1,6 @@
 import Amenities from "../amenities/Amenities";
 import Expenses from "../expenses/Expenses";
-import Message from "../message/Message";
+import Message from "../../components/Message";
 
 export default function Home() {
     return (

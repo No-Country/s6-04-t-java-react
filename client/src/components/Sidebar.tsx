@@ -60,7 +60,7 @@ export default function Sidebar() {
   };
 
   return (
-    <div className="text-black-navbar 1048:w-80">
+    <div className="text-black-navbar 1048:w-70 2xl:w-80">
       <div className="clip-path bg-white shadow-[0_0_0_100vmax_rgba(255,255,255,1)] 1048:hidden">
         <div className="flex max-w-sm flex-row-reverse justify-between py-2 ">
           <h2 className="flex flex-row items-center gap-4 text-center font-bold uppercase tracking-[4px]">
@@ -81,8 +81,10 @@ export default function Sidebar() {
       >
         <div className="flex w-full basis-1/5 flex-row-reverse items-start justify-between px-6 py-2 450:px-12 sm:px-[20%] 1048:justify-center">
           <h2 className="flex flex-row items-center gap-4 text-center text-2xl font-bold uppercase tracking-[4px]">
-            <RiBuilding4Line className="text-[2.5rem] font-bold" />
-            liveto
+              <RiBuilding4Line className="text-[2.5rem] font-bold" />
+            <NavLink to="/main">
+              liveto
+            </NavLink>
           </h2>
           <button onClick={openMenu} className="bg-blue-400 1048:hidden ">
             <RiHome3Line className="text-[2.5rem]" />

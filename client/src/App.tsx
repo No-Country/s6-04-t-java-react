@@ -11,6 +11,7 @@ import MenuLogin from "./pages/login/MenuLogin";
 import NewUser from "./pages/login/NewUser";
 import { AuthContext } from "./context/authContext";
 import PrivateLayout from "./layouts/PrivateLayout";
+import Main from "./pages/main/Main";
 
 function App() {
   const [isUserLogged, setIsUserLogged] = useState(false);
@@ -30,6 +31,7 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route element={<PrivateLayout />}>
             <Route path="/request" element={<Request />} />
+            <Route path="/main" element={<Main />} />
             <Route path="/expenses" element={<ExpensesHistory />} />
             <Route path="/amenities" element={<AmenitiesInfo />} />
             <Route path="/message" element={<MessageHistory />} />

@@ -9,18 +9,14 @@ const Footer = () => {
           <div className="-mx-6 w-full lg:w-2/5">
             <div className="px-6">
               <NavLink to="/home">
-                <img
-                  className="h-7 w-auto"
-                  src=""
-                  alt="LIVETO"
-                />
+                <img className="h-7 w-auto" src="" alt="LIVETO" />
               </NavLink>
 
               <p className="text-gray-500 dark:text-gray-400 mt-2 max-w-sm">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae ipsum odio cumque accusantium impedit tempore quas perferendis hic aliquid porro.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Recusandae ipsum odio cumque accusantium impedit tempore quas
+                perferendis hic aliquid porro.
               </p>
-
-        
             </div>
           </div>
 
@@ -30,67 +26,65 @@ const Footer = () => {
                 <h3 className="text-gray-700 uppercase dark:text-black">
                   About
                 </h3>
-                <a
-                  href="#"
-                  className="text-gray-600 dark:text-gray-400 mt-2 block text-sm hover:underline"
-                >
-                  Company
-                </a>
-                <a
-                  href="#"
-                  className="text-gray-600 dark:text-gray-400 mt-2 block text-sm hover:underline"
-                >
-                  Community
-                </a>
-                <a
-                  href="#"
-                  className="text-gray-600 dark:text-gray-400 mt-2 block text-sm hover:underline"
-                >
-                  Spaces
-                </a>
+                <NavLink to="/home">
+                  <p className="text-gray-600 dark:text-gray-400 mt-2 block text-sm hover:underline">
+                    Company
+                  </p>
+                </NavLink>
+
+                <NavLink to="/home">
+                  <p className="text-gray-600 dark:text-gray-400 mt-2 block text-sm hover:underline">
+                    Community
+                  </p>
+                </NavLink>
+
+                <NavLink to="/home">
+                  <p className="text-gray-600 dark:text-gray-400 mt-2 block text-sm hover:underline">
+                    Spaces
+                  </p>
+                </NavLink>
               </div>
 
               <div>
                 <h3 className="text-gray-700 uppercase dark:text-black">
                   Explora
                 </h3>
-                <a
-                  href="#"
-                  className="text-gray-600 dark:text-gray-400 mt-2 block text-sm hover:underline"
-                >
-                  Escritorio
-                </a>
-                <a
-                  href="#"
-                  className="text-gray-600 dark:text-gray-400 mt-2 block text-sm hover:underline"
-                >
-                  Gastos y Expensas
-                </a>
-                <a
-                  href="#"
-                  className="text-gray-600 dark:text-gray-400 mt-2 block text-sm hover:underline"
-                >
-                  Mensajes
-                </a>
+
+                <NavLink to="/home">
+                  <p className="text-gray-600 dark:text-gray-400 mt-2 block text-sm hover:underline">
+                    Escritorio
+                  </p>
+                </NavLink>
+
+                <NavLink to="/home">
+                  <p className="text-gray-600 dark:text-gray-400 mt-2 block text-sm hover:underline">
+                    Gastos y Expensas
+                  </p>
+                </NavLink>
+
+                <NavLink to="/home">
+                  <p className="text-gray-600 dark:text-gray-400 mt-2 block text-sm hover:underline">
+                    Mensajes
+                  </p>
+                </NavLink>
               </div>
 
               <div>
                 <h3 className="text-gray-700 uppercase dark:text-black">
                   Explora
                 </h3>
-                <a
-                  href="#"
-                  className="text-gray-600 dark:text-gray-400 mt-2 block text-sm hover:underline"
-                >
-                  Espacios Comunes
-                </a>
+
+                <NavLink to="/home">
+                  <p className="text-gray-600 dark:text-gray-400 mt-2 block text-sm hover:underline">
+                    Espacios Comunes
+                  </p>
+                </NavLink>
                 <a
                   href="#"
                   className="text-gray-600 dark:text-gray-400 mt-2 block text-sm hover:underline"
                 >
                   Reportes
                 </a>
-                
               </div>
 
               <div>

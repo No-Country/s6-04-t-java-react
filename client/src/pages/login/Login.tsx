@@ -3,22 +3,19 @@ import { RiBuilding4Line } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
 import { liveto } from "../../assets/iconslogin/index";
 import { useAuth } from "../../context/authContext";
+import PrivateLayout from "../../layouts/PrivateLayout";
+import { login } from "../../service/auth";
 
 const Login = () => {
   const navigate = useNavigate();
-  const { isUserLogged, setIsUserLogged } = useAuth();
+  const { checkUserToken } = useAuth();
 
   useEffect(() => {
-    if (isUserLogged) {
-      navigate("/home");
-    }
-  }, [isUserLogged]);
+    if (checkUserToken) navigate("/home");
+  }, []);
 
-  const login = () => {
-    setIsUserLogged(true);
-    localStorage.setItem('isUserLogged','true')
-    navigate("/home");
-  };
+  if (checkUserToken) return <PrivateLayout />;
+
 
   return (
     // <div className="1048:flex 1048:h-3/4 1048:justify-center items-center 1048:px-24">

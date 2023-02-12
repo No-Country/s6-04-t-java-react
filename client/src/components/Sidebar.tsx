@@ -38,6 +38,11 @@ const links = [
     to: "/request",
     icon: <RiAlertFill />,
   },
+  {
+    name: "Estadisticas",
+    to: "/statistics",
+    icon: <RiAlertFill />,
+  },
 ];
 
 export default function Sidebar() {

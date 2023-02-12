@@ -18,6 +18,7 @@ import { AuthContext } from "./context/authContext";
 import PrivateLayout from "./layouts/PrivateLayout";
 import Main from "./pages/main/Main";
 import { checkBroadcastToLogOutInAllTabs, checkToken } from "./service/auth";
+import Statistics from "./pages/statistics/Statistics";
 
 function App() {
   const navigate = useNavigate();
@@ -38,6 +39,7 @@ function App() {
           <Route path="/expenses" element={<Expenses />} />
           <Route path="/amenities" element={<AmenitiesInfo />} />
           <Route path="/message" element={<MessageHistory />} />
+          <Route path="/statistics" element={<Statistics />} />
           <Route path="/home" element={<Home />} />
         </Route>
       </Routes>

@@ -1,6 +1,6 @@
 import "./App.css";
 import { useEffect, useState } from "react";
-import { Request, Home, Login } from "./pages/index";
+import { Request, Home, Login, Expenses } from "./pages/index";
 import {
   Route,
   Routes,
@@ -9,6 +9,7 @@ import {
 import { useAppDispatch, useAppSelector } from "./hooks/reduxHooks";
 import { increment } from "./store/slices/counter.slice";
 import ExpensesHistory from "./pages/expenses/ExpensesHistory";
+
 import AmenitiesInfo from "./pages/amenities/AmenitiesInfo";
 import MessageHistory from "./pages/message/MessageHistory";
 import MenuLogin from "./pages/login/MenuLogin";
@@ -27,13 +28,14 @@ function App() {
   }, []);
 
   return (
+
     <AuthContext.Provider value={{ checkUserToken }}>
       <Routes>
         <Route path="/" element={<Login />} />
         <Route element={<PrivateLayout />}>
           <Route path="/request" element={<Request />} />
           <Route path="/main" element={<Main />} />
-          <Route path="/expenses" element={<ExpensesHistory />} />
+          <Route path="/expenses" element={<Expenses />} />
           <Route path="/amenities" element={<AmenitiesInfo />} />
           <Route path="/message" element={<MessageHistory />} />
           <Route path="/home" element={<Home />} />

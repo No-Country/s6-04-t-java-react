@@ -15,7 +15,15 @@ export default function LatestRecords() {
                 <div className="flex flex-row justify-between " >
                     <div className="basis-3/4 flex flex-arrow items-center"> {leftArrow}<p className='text-left  font-poppins'>Reparación terraza</p></div>
                     <div className="basis-1/4 items-end  flex flex-row items-center justify-end"><p className='text-right text-sm text-zinc-800'>-$24.600</p></div>
-               
+
+                    
+                
+                </div>
+
+                <div className="flex flex-row justify-between " >                    
+
+                    <div className="basis-3/4 flex flex-arrow items-center"> {rightArrow}<p className='text-left  font-poppins'>Publicidad exterior</p></div>
+                    <div className="basis-1/4 items-end  flex flex-row items-center justify-end"><p className='text-right text-sm text-zinc-800'>-$78.000</p></div>
                 
                 </div>
                 </div>

@@ -2,7 +2,7 @@ import LatestRecords from "./LatestRecords"
 export default function Expenses() {
     return (
         <div className="1048:px-36">
-            <div className="bg-white py-4 px-6 flex flex-col gap-y-4 rounded-2xl border-none md:h-[100%]">
+            {/* <div className="bg-white py-4 px-6 flex flex-col gap-y-4 rounded-2xl border-none md:h-[100%]">
                 <div>
                     <h3 className='font-semibold text-2xl'>Estado de la cuenta
                     </h3>
@@ -21,7 +21,7 @@ export default function Expenses() {
                     <p>10/01/2022</p>
                 </div>
                 <p className="text-center font-normal text-sm text-medium2-blue">Ver expensas</p>
-            </div>
+            </div> */}
 
             <LatestRecords />
 

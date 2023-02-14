@@ -41,7 +41,7 @@ const Login = () => {
               />
             </div>
             <div className="mb-4 flex flex-col">
-              <label htmlFor="password">Cotraseña</label>
+              <label htmlFor="password">Contraseña</label>
               <input
                 className="rounded-md bg-medium-gray"
                 type="password"

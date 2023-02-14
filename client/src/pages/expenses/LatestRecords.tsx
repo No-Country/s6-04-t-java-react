@@ -7,26 +7,41 @@ export default function LatestRecords() {
             {/* <Expenses /> */}
             <div className='bg-white rounded-2xl mt-6 p-6 '>
                 <h2 className='font-semibold text-2xl'>Últimos Registros</h2>
+
                 <div className="flex flex-row justify-between " >
                     <div className="basis-3/4 bg-slate-100"><p className='text-left text-xs text-zinc-400 font-semibold font-Inter'>HOY</p></div>
                     <div className="basis-1/4 items-end bg-slate-100"><p className='text-right text-xs text-zinc-400 font-Inter'>MONTO</p></div>               
                 </div>
 
+                
+
                 <div className="flex flex-row justify-between " >
                     <div className="basis-3/4 flex flex-arrow items-center"> {leftArrow}<p className='text-left  font-poppins'>Reparación terraza</p></div>
-                    <div className="basis-1/4 items-end  flex flex-row items-center justify-end"><p className='text-right text-sm text-zinc-800'>-$24.600</p></div>
-
-                    
-                
+                    <div className="basis-1/4 items-end  flex flex-row items-center justify-end"><p className='text-right text-sm text-zinc-800'>-$24.600</p></div>                
                 </div>
 
-                <div className="flex flex-row justify-between " >                    
+                <div className="flex flex-row justify-between " >
+                    <div className="basis-3/4 flex flex-arrow items-center"> {leftArrow}<p className='text-left  font-poppins'>Serv. Mantenimiento Frente</p></div>
+                    <div className="basis-1/4 items-end  flex flex-row items-center justify-end"><p className='text-right text-sm text-zinc-800'>-$245.000</p></div>                
+                </div>
 
+                <div className="flex flex-row justify-between " >
+                    <div className="basis-3/4 flex flex-arrow items-center"> {leftArrow}<p className='text-left  font-poppins'>Art. de limpieza</p></div>
+                    <div className="basis-1/4 items-end  flex flex-row items-center justify-end"><p className='text-right text-sm text-zinc-800'>-$16.700</p></div>                
+                </div>
+
+                <div className="flex flex-row justify-between " >
                     <div className="basis-3/4 flex flex-arrow items-center"> {rightArrow}<p className='text-left  font-poppins'>Publicidad exterior</p></div>
-                    <div className="basis-1/4 items-end  flex flex-row items-center justify-end"><p className='text-right text-sm text-zinc-800'>-$78.000</p></div>
-                
+                    <div className="basis-1/4 items-end  flex flex-row items-center justify-end"><p className='text-right text-sm text-zinc-800'>-$78.000</p></div>                
                 </div>
+
+                <div className="flex flex-row justify-between " >
+                    <div className="basis-3/4 flex flex-arrow items-center"> {leftArrow}<p className='text-left  font-poppins'>Arreglos navidad</p></div>
+                    <div className="basis-1/4 items-end  flex flex-row items-center justify-end"><p className='text-right text-sm text-zinc-800'>-$5.300</p></div>                
                 </div>
+
+
+            </div>
                
         </div>
     )

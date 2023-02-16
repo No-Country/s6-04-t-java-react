@@ -5,7 +5,6 @@ import {
   tennis,
   yoga,
 } from "../../assets/amenitiesIcons/index";
-import CalendarComponent from "./Calendar/Calendar";
 import {
   BsFillSunFill,
   BsFillSunriseFill,

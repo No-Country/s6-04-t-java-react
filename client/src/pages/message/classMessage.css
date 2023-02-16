@@ -16,4 +16,8 @@
   .Comunicacion {
     @apply border-[#E1AF3F] text-[#E1AF3F];
   }
+
+  /* .Votacion-Activa-Div {
+    @apply border-l-8 border-solid border-[#6996FF];
+  } */
 }

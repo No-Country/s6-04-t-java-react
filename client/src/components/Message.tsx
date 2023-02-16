@@ -4,11 +4,8 @@ interface PropsMessage {
   clase: string;
 }
 export default function Message({ by, clase }: PropsMessage) {
-  const uwu = {
-    clase: "Votacion-Activa",
-  };
   return (
-    <div className="rounded-2xl border-2 border-solid border-gray py-4 pl-4">
+    <div className={` rounded-2xl border-2 border-solid border-gray py-4 pl-4`}>
       <div
         className={`inline justify-center rounded-[2rem]  border-2 p-1 px-2 ${clase}`}
       >
@@ -19,6 +16,7 @@ export default function Message({ by, clase }: PropsMessage) {
         Primer mensaje de la Administracion,siguiente junta favor de confirmar
         asistencia
       </p>
+      <button></button>
     </div>
   );
 }

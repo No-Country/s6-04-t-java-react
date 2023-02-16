@@ -1,7 +1,8 @@
+import ExpensesHistory from "./ExpensesHistory"
 import LatestRecords from "./LatestRecords"
 export default function Expenses() {
     return (
-        <div className="1048:px-36">
+        <div className="flex flex-row justify-around">
             {/* <div className="bg-white py-4 px-6 flex flex-col gap-y-4 rounded-2xl border-none md:h-[100%]">
                 <div>
                     <h3 className='font-semibold text-2xl'>Estado de la cuenta
@@ -24,6 +25,7 @@ export default function Expenses() {
             </div> */}
 
             <LatestRecords />
+            <ExpensesHistory />
 
         </div>
 

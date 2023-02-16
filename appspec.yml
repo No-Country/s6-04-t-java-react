@@ -2,8 +2,8 @@ version: 0.0
 os: linux
 
 files:
-  - source: /
-    destination: /home/ec2-user/client-liveto/client
+  - source: /client
+    destination: /home/ec2-user/client-liveto
 
 permissions:
   - object: /

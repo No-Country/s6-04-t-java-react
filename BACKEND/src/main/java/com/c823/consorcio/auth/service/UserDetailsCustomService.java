@@ -63,9 +63,15 @@ public class UserDetailsCustomService implements UserDetailsService {
     return UserDetailsImpl.build(userEntity);
   }
 
-  public ResponseUserDto save(ResponseUserDto userDto) throws RepeatedUsername {
+  public ResponseUserDto save(ResponseUserDto userDto) throws Exception {
+    UserEntity userExist = this.iUserRepository.findByEmail(userDto.getEmail());
+
+    if(userExist != null) {
+      throw new Exception("user already exist");
+    }
+
     if (iApartmentRepository.findByApartmentNumber(userDto.getApartmentNumber()) != null){
-      throw new RepeatedUsername("Repeted Apartment Number");
+      throw new Exception("Repeted Apartment Number");
     }
     UserEntity entity = this.userMap.userAuthDto2Entity(userDto);
 

@@ -1,7 +1,7 @@
 package com.c823.consorcio.enums;
 
 public enum Amenities {
-  LOUNGE ("LOUNGE"), SWPOOL("SWPOOL"), GRILL("GRILL"), GYM("GYM"), TENNIS("TENNIS");
+  SALON ("SALON"), PISCINA("PISCINA"), PARRILLA("PARRILLA"), GYM("GYM"), TENIS("TENIS");
 
   private final String name;
 

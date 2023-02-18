@@ -43,6 +43,11 @@ const links = [
     to: "/statistics",
     icon: <RiAlertFill />,
   },
+  {
+    name: "Pago",
+    to: "/billing",
+    icon: <RiAlertFill />,
+  }
 ];
 
 export default function Sidebar() {

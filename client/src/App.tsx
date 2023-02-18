@@ -1,10 +1,11 @@
 import "./App.css";
 import { useEffect, useState } from "react";
-import { Request, Home, Login } from "./pages/index";
+import { Request, Home, Login, Expenses } from "./pages/index";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "./hooks/reduxHooks";
 import { increment } from "./store/slices/counter.slice";
 import ExpensesHistory from "./pages/expenses/ExpensesHistory";
+
 import AmenitiesInfo from "./pages/amenities/AmenitiesInfo";
 import MessageHistory from "./pages/message/MessageHistory";
 import MenuLogin from "./pages/login/MenuLogin";
@@ -14,6 +15,7 @@ import PrivateLayout from "./layouts/PrivateLayout";
 import Main from "./pages/main/Main";
 import { checkBroadcastToLogOutInAllTabs, checkToken } from "./service/auth";
 import Statistics from "./pages/statistics/Statistics";
+import Billing from "./pages/billing/Billing";
 import { QueryClient, QueryClientProvider } from "react-query";
 
 function App() {
@@ -25,6 +27,7 @@ function App() {
   }, []);
   const queryclient = new QueryClient();
   return (
+
     <AuthContext.Provider value={{ checkUserToken }}>
       <QueryClientProvider client={queryclient}>
         <Routes>
@@ -36,6 +39,8 @@ function App() {
             <Route path="/amenities" element={<AmenitiesInfo />} />
             <Route path="/message" element={<MessageHistory />} />
             <Route path="/statistics" element={<Statistics />} />
+                      <Route path="/billing" element={<Billing />} />
+
             <Route path="/home" element={<Home />} />
           </Route>
         </Routes>

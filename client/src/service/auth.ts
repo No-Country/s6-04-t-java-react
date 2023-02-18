@@ -1,6 +1,7 @@
 import { BroadcastChannel } from 'broadcast-channel';
 
 const sessionChannel = new BroadcastChannel('logout');
+let accesWithoutToken = false;
 
 const login = () => {
   localStorage.setItem("token", "user_token_from_API");
@@ -10,6 +11,7 @@ const login = () => {
 
 const checkToken = () => {
   const token = localStorage.getItem("token");
+  if (!token) { accesWithoutToken = true; sessionChannel.postMessage("Logout"); }
   return token;
 };
 
@@ -22,12 +24,12 @@ const checkBroadcastToLogOutInAllTabs = (navigateTo: any) => {
 
   sessionChannel.onmessage = (e) => {
     if (e === 'Logout') {
-      navigateTo();
+      if (accesWithoutToken) { return; }
+      navigateTo(0);
     }
-    // sessionChannel.close();
 
     if (e === 'Login') {
-      navigateTo(0); // (0) means Reload page    
+      navigateTo(0);  
     }
   };
 };

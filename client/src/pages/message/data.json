@@ -1,0 +1,14 @@
+{
+  "messages":[
+  {
+    "type": "Votacion-Activa",
+    "from": "admin",
+    "message": "testing"
+  },
+  {
+    "type": "Reparacion",
+    "from": "admin",
+    "message": "testing2"
+  }
+]
+}

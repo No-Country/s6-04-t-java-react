@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import counterSlice from "./slices/counter.slice";
+import reducerMessage from "./messageReducer/message";
 // ...
 
 const store = configureStore({
   reducer: {
     counter: counterSlice,
+    messageReducer: reducerMessage,
   },
 });
 

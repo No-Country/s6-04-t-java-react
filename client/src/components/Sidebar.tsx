@@ -15,7 +15,7 @@ import { logout } from "../service/auth";
 const links = [
   {
     name: "Escritorio",
-    to: "/",
+    to: "/home",
     icon: <RiDashboardLine />,
   },
   {

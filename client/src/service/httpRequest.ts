@@ -3,9 +3,8 @@ import axios from "axios";
 const URL: string = import.meta.env.VITE_API_URL
 
 // @ts-ignore
-// const { token } = JSON.parse(localStorage.getItem("auth")) || "";
+const { token } = JSON.parse(localStorage.getItem("auth")) || "";
 
-const token = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0QHRlc3QuY29tIiwiZXhwIjoxNjc2ODcxNTAzLCJpYXQiOjE2NzY4MzU1MDN9.JmZqE3cz0kK8fO1yTItH3w2vRaisFOP9DwVct_jGsLEs_2xE1-WzVT2Kzof2y2rCF5u_KYN2Af_LpcRC8221eg'
 
 const Authorization = token && `Bearer ${token}`;
 

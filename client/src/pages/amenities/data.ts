@@ -18,16 +18,6 @@ export const reservationReponse = [
     reservationDate: "2022-08-25",
     tunr: "NIGHT"
   },
-  {
-    name: "SWPOOL",
-    reservationDate: "2022-08-25",
-    tunr: "NIGHT"
-  },
-  {
-    name: "SWPOOL",
-    reservationDate: "2022-08-25",
-    tunr: "NIGHT"
-  }
   ]
 
 

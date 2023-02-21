@@ -2,7 +2,7 @@ import { BroadcastChannel } from 'broadcast-channel';
 import { loginToAPI } from './apiCall';
 
 const sessionChannel = new BroadcastChannel('logout');
-let accesWithoutToken = false;
+// let accesWithoutToken = false;
 
 interface Credentials {
   email: string;
@@ -22,7 +22,7 @@ const login = (credentials: Credentials, setIsLoadingUser: any) => {
 
 const checkToken = () => {
   const token = localStorage.getItem("token");
-  if (!token) { accesWithoutToken = true; sessionChannel.postMessage("Logout"); }
+  // if (!token) { accesWithoutToken = true; sessionChannel.postMessage("Logout"); }
   return token;
 };
 
@@ -35,7 +35,7 @@ const checkBroadcastToLogOutInAllTabs = (navigateTo: any) => {
 
   sessionChannel.onmessage = (e) => {
     if (e === 'Logout') {
-      if (accesWithoutToken) { return; }
+      // if (accesWithoutToken) { return }
       navigateTo(0);
     }
 

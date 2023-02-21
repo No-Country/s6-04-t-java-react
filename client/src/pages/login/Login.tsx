@@ -30,8 +30,6 @@ const Login = () => {
 
   const onSubmit = (data: any) => {
     login(data, setIsLoadingUser);
-    // setValue('email', '');
-    // setValue('password', '');
   };
 
   return (

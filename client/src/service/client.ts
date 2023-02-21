@@ -2,7 +2,7 @@ import axios from "axios";
 
 const client = axios.create({
     // baseURL: import.meta.env.VITE_API_BASE_URL
-    baseURL: "http://consorcio-production.up.railway.app"
+    baseURL: "https://consorcio-production.up.railway.app"
 });
 
 client.interceptors.response.use(response => response.data);

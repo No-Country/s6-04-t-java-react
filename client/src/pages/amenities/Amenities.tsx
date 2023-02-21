@@ -241,18 +241,21 @@ const AmenitiesInfo = () => {
               <label htmlFor="amenity">Espacio</label>
               <input
                 id="amenity"
+                disabled
                 className="h-12 w-full rounded-md bg-[#F9F2FF] placeholder:pl-3 placeholder:font-medium placeholder:text-black"
                 placeholder={nextStepData.name}
               />
               <label htmlFor="date">Fecha</label>
               <input
                 id="date"
+                disabled
                 className="h-12 w-full rounded-md bg-[#F9F2FF] placeholder:pl-3 placeholder:font-medium placeholder:capitalize placeholder:text-black"
                 placeholder={nextStepData.reservationDate}
               />
               <label htmlFor="hour">Horario</label>
               <input
                 id="hour"
+                disabled
                 className="h-12 w-full rounded-md bg-[#F9F2FF] placeholder:pl-3 placeholder:font-medium placeholder:text-black"
                 placeholder={nextStepData.turn}
               />

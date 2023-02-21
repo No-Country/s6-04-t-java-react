@@ -131,6 +131,7 @@ const AmenitiesInfo = () => {
 
 
   // const {data: reservations} = useGetReservation()
+  console.log(reservationData)
 
   return (
     <div className="flex h-full w-full flex-col gap-6 px-6 pb-6 1048:flex-row">
@@ -223,6 +224,7 @@ const AmenitiesInfo = () => {
                 </div>
                 <button
                   onClick={onClickReservation}
+                  disabled={reservationData.name === '' || reservationData.reservationDate === null || reservationData.turn === ''}
                   className="h-14 w-full rounded-xl bg-[#5F81FF] px-4 text-base font-medium text-white disabled:bg-[#D4D3F1]"
                 >
                   Reservar

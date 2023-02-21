@@ -1,12 +1,23 @@
 import { BroadcastChannel } from 'broadcast-channel';
+import { loginToAPI } from './apiCall';
 
 const sessionChannel = new BroadcastChannel('logout');
 let accesWithoutToken = false;
 
-const login = () => {
-  localStorage.setItem("token", "user_token_from_API");
-  sessionChannel.postMessage("Login");
+interface Credentials {
+  email: string;
+  password: string;
+}
 
+const login = (credentials: Credentials, setIsLoadingUser: any) => {
+  setIsLoadingUser(true);
+  loginToAPI(credentials).then(
+    ({ jwt }) => {
+      localStorage.setItem("token", jwt);
+      setIsLoadingUser(false);
+      sessionChannel.postMessage("Login");
+    }
+  );
 };
 
 const checkToken = () => {
@@ -29,7 +40,7 @@ const checkBroadcastToLogOutInAllTabs = (navigateTo: any) => {
     }
 
     if (e === 'Login') {
-      navigateTo(0);  
+      navigateTo(0);
     }
   };
 };

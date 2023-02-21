@@ -1,14 +1,14 @@
 import client from "./client";
 
 interface Credentials {
-    username: string;
-    password: string;
+  email: string;
+  password: string;
 }
 
-const login = (credentials: Credentials) => {
-    const { username, password } = credentials;
-    return client.post('/login/', { username, password }
-    );
+const loginToAPI =  async (credentials: Credentials) => {
+  const { email, password } = credentials;
+  const response = await client.post('/auth/login', { email, password });
+  return response;
 };
 
-export {login}
+export { loginToAPI };

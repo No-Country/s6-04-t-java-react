@@ -21,14 +21,14 @@ import { QueryClient, QueryClientProvider } from "react-query";
 function App() {
   const navigate = useNavigate();
   const checkUserToken = checkToken();
+  const [isLoadingUser, setIsLoadingUser] = useState(false)
 
   useEffect(() => {
     checkBroadcastToLogOutInAllTabs((url: any) => navigate(url));
   }, []);
   const queryclient = new QueryClient();
   return (
-
-    <AuthContext.Provider value={{ checkUserToken }}>
+    <AuthContext.Provider value={{ checkUserToken, isLoadingUser, setIsLoadingUser }}>
       <QueryClientProvider client={queryclient}>
         <Routes>
           <Route path="/" element={<Login />} />
@@ -39,7 +39,7 @@ function App() {
             <Route path="/amenities" element={<AmenitiesInfo />} />
             <Route path="/message" element={<MessageHistory />} />
             <Route path="/statistics" element={<Statistics />} />
-                      <Route path="/billing" element={<Billing />} />
+            <Route path="/billing" element={<Billing />} />
 
             <Route path="/home" element={<Home />} />
           </Route>

@@ -39,7 +39,7 @@ const Login = () => {
     <div className="flex h-screen flex-col items-center justify-center">
       <div className="flex">
         <div className="hidden 1048:block">
-          <img className="h-80" src={liveto} alt="" />
+          <img className="w-60" src={liveto} alt="" />
         </div>
         <div className="rounded-r-2xl bg-white p-4">
           <h2 className="flex items-center justify-center gap-4  font-bold uppercase tracking-[4px]">

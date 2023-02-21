@@ -12,15 +12,14 @@ const PrivateLayout = () => {
   }
 
   return (
-    
     <>
-    <div className="px-6 font-Poppins 450:px-12 sm:px-[20%] 1048:grid 1048:grid-cols-5 1048:px-0">
-      <Sidebar />
-      <div className="flex flex-col  pb-8 1048:col-span-4">
-        <UserInfo />
-        <Outlet />
+      <div className="px-6 font-Poppins 450:px-12 sm:px-[20%] 1048:grid 1048:grid-cols-5 1048:px-0">
+        <Sidebar />
+        <div className="flex flex-col  pb-8 1048:col-span-4">
+          <UserInfo />
+          <Outlet />
+        </div>
       </div>
-    </div>
       <Footer />
     </>
   );

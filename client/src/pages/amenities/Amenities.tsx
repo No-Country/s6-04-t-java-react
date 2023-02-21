@@ -1,41 +1,30 @@
-import { successIcon, leftArrow } from "../../assets/amenitiesIcons/index";
 import {
   BsFillSunFill,
   BsFillSunriseFill,
   BsFillMoonFill,
-  BsXLg,
 } from "react-icons/bs";
 import { useState } from "react";
 import { Calendar } from "react-calendar";
 import "./styles.css";
 import { useGetReservation } from "../../hooks/useAmenity";
 import axios from "axios";
-import {
-  reservationAmenity,
-  reservationMonth,
-  reservationNumberDay,
-  reservationTurn,
-} from "./helpers";
-import { amenities, reservationReponse } from "./data";
+import { amenities } from "./data";
+import SuccessView from "./SuccessView";
+import CommonSpaces from "./CommonSpaces";
+import Reservations from "./Reservations";
+import { Reservation, Schedule } from "../../models/Amenities";
 
-export type Schedule = {
-  icon: JSX.Element;
-  name: string;
-  hours: string;
-  value: string;
-};
-
-type Reservation = {
-  name: string | "GRILL" | "SWPOOL" | "GYM" | "TENNIS" | "LOUNGE";
-  reservationDate: Date | null;
-  turn: string | "MORNING" | "AFTERNOON" | "NIGHT";
-};
-
-type NextStepData = {
+export type NextStepData = {
   name: string;
   reservationDate: string;
   turn: string;
 };
+
+export type ViewState = {
+  showCalendar: boolean
+  showNextStep: boolean
+  showSuccessView: boolean
+  showTurns: boolean}
 
 export type Schedules = Schedule[];
 
@@ -66,11 +55,15 @@ const initStateReservationData = {
   turn: "",
 };
 
+const initViewsState: ViewState = {
+  showCalendar: false,
+  showNextStep: false,
+  showSuccessView: false,
+  showTurns: false
+}
+
 const AmenitiesInfo = () => {
-  const [showCalendar, setShowCalendar] = useState(false);
-  const [showNextStep, setShowNextStep] = useState(false);
-  const [showSuccessView, setShowSuccessView] = useState(false);
-  const [showTurns, setShowTurns] = useState(false);
+  const [viewsStates, setViewsStates] = useState(initViewsState)
   const [date, setDate] = useState(new Date());
   const [reservationData, SetReservationData] = useState(
     initStateReservationData as Reservation
@@ -82,7 +75,7 @@ const AmenitiesInfo = () => {
   } as NextStepData);
 
   const onClickDay = () => {
-    setShowTurns(true);
+    setViewsStates((prev) => ({...prev, showTurns: true}))
   };
 
   const onChangeSelectAmenity = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -91,7 +84,7 @@ const AmenitiesInfo = () => {
       ...prev,
       name: e.target.selectedOptions[0].innerText,
     }));
-    setShowCalendar(true);
+    setViewsStates((prev) => ({...prev, showCalendar: true}))
   };
 
   const changeDate = (e: Date) => {
@@ -119,100 +112,36 @@ const AmenitiesInfo = () => {
 
   const onClickReservation = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    setShowNextStep(true);
-    console.log(reservationData);
-    console.log(nextStepData);
+    setViewsStates((prev) => ({...prev, showNextStep: true}))
   };
 
   const onClickConfirm = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    setShowNextStep(false);
-    setShowSuccessView(true);
+    setViewsStates((prev) => ({...prev, showNextStep: false, showSuccessView: true}))
+    console.log(reservationData)
   };
 
   const onClose = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     SetReservationData(initStateReservationData);
-    setShowCalendar(false);
-    setShowSuccessView(false);
-    setShowNextStep(false);
-    setShowTurns(false);
+    setViewsStates(initViewsState)
   };
+
+  const disabledDates = [new Date("2023-02-20"), new Date("2023-02-22"),new Date("2023-02-28"), new Date("2023-01-27")]
+
 
   // const {data: reservations} = useGetReservation()
 
   return (
     <div className="flex h-full w-full flex-col gap-6 px-6 pb-6 1048:flex-row">
       <div className="flex w-full flex-col items-stretch gap-6 lg:max-w-xl 2xl:max-w-full">
-        <div className="w-full rounded-2xl bg-white py-4 px-6">
-          <h2 className="mb-3 text-2xl font-semibold">Espacios comunes</h2>
-          <div className=" mx-auto flex w-full items-center justify-between gap-2 overflow-auto overscroll-auto py-5 xl:gap-7">
-            {amenities &&
-              amenities.map((amenity) => (
-                <div
-                  key={amenity.id}
-                  className={`flex min-h-[6rem] min-w-[6rem] flex-col items-center  justify-center gap-2 rounded-2xl border-2 bg-transparent xl:h-[9rem] xl:w-[8rem] border-${amenity.bgColor}`}
-                >
-                  <img
-                    className={`bg-${amenity.color} w-10 rounded-md p-1`}
-                    src={amenity.icon}
-                    alt={amenity.name}
-                  />
-                  <p className="text-xs font-bold xl:text-sm">{amenity.name}</p>
-                </div>
-              ))}
-          </div>
-          <div>
-            <h2 className="my-3 text-base font-bold">Reglas de uso</h2>
-            <p className="text-sm font-normal">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Temporibus reiciendis earum, totam voluptatibus saepe amet non
-              tenetur consectetur eveniet nesciunt.
-            </p>
-            <p className="mt-3 text-sm font-normal  text-background-blue">
-              Descargar reglamento
-            </p>
-          </div>
-        </div>
-        <div className="h-full  rounded-2xl bg-white py-4 px-6 ">
-          <h2 className="mb-3 text-2xl font-semibold">Mis reservas</h2>
-          <div className="flex max-h-96 flex-col gap-2 overflow-scroll">
-            {reservationReponse.length > 0 ? (
-              reservationReponse.map((reservation) => (
-                <div
-                  key={reservation.reservationDate}
-                  className="flex w-full items-center justify-start gap-6 rounded-2xl bg-[#F4F5FA] px-3 py-2 font-Poppins"
-                >
-                  <div className="w-16 bg-white text-center">
-                    <h3 className="text-3xl font-semibold">
-                      {reservationNumberDay(reservation.reservationDate)}
-                    </h3>
-                    <p className="text-sm font-normal capitalize">
-                      {reservationMonth(reservation.reservationDate)}
-                    </p>
-                  </div>
-                  <div>
-                    <h3 className="text-base font-bold">
-                      {reservationAmenity(reservation.name)}
-                    </h3>
-                    <p className="text-sm font-normal text-[#6F6F6F]">
-                      {reservationTurn(reservation.tunr)}
-                    </p>
-                  </div>
-                </div>
-              ))
-            ) : (
-              <p className="mt-10 text-center text-[#BABABA]">
-                No tienes ninguna reserva en tu calendario
-              </p>
-            )}
-          </div>
-        </div>
+        <CommonSpaces />
+        <Reservations />
       </div>
       <div className="h-full w-full rounded-2xl bg-white py-4 px-6">
         <h2
           className={`${
-            showSuccessView ? "hidden" : "flex"
+            viewsStates.showSuccessView ? "hidden" : "flex"
           } mb-3 text-2xl font-semibold`}
         >
           Realizar una reserva
@@ -225,7 +154,7 @@ const AmenitiesInfo = () => {
         >
           <div
             className={`${
-              showNextStep || showSuccessView ? "hidden" : "flex"
+              viewsStates.showNextStep || viewsStates.showSuccessView ? "hidden" : "flex"
             } flex-col items-center gap-2 font-Poppins`}
           >
             <label
@@ -251,15 +180,18 @@ const AmenitiesInfo = () => {
                   </option>
                 ))}
             </select>
-            {showCalendar ? (
+            {viewsStates.showCalendar ? (
               <Calendar
                 calendarType="US"
                 onChange={changeDate}
                 value={date}
                 onClickDay={onClickDay}
+                tileDisabled={({date}) => disabledDates.some(disabledDate => date.getFullYear() === disabledDate.getFullYear() &&
+                date.getMonth() === disabledDate.getMonth() &&
+                date.getDate() === disabledDate.getDate()+1)}
               />
             ) : null}
-            {showTurns ? (
+            {viewsStates.showTurns ? (
               <div className="flex w-full flex-col items-center justify-center gap-6 py-6">
                 <h2 className="self-start font-Poppins font-medium text-[#464265]">
                   Disponibilidad
@@ -301,7 +233,7 @@ const AmenitiesInfo = () => {
 
           <div
             className={`${
-              showNextStep ? "flex" : "hidden"
+              viewsStates.showNextStep ? "flex" : "hidden"
             } h-full max-h-full w-full flex-col gap-6`}
           >
             <h2 className="font-bold text-[#464265]">Detalles</h2>
@@ -341,50 +273,7 @@ const AmenitiesInfo = () => {
               </button>
             </div>
           </div>
-          <div className=" hidden h-full max-h-full w-full flex-col gap-6"></div>
-          <div
-            className={`${
-              showSuccessView ? "flex" : "hidden"
-            } h-full max-h-full w-full flex-col items-center justify-evenly gap-6`}
-          >
-            <button onClick={onClose} className="self-start">
-              <BsXLg />
-            </button>
-            <img src={successIcon} alt="success icon" className="w-32" />
-            <h2 className="text-2xl font-semibold text-[#464265]">
-              Reserva realizada!
-            </h2>
-            <div className="w-full rounded-2xl bg-[#F9F2FF] p-6">
-              <p className="text-sm font-normal text-[#464265]">Espacio</p>
-              <h3 className="text-lg font-medium text-[#464265]">
-                {nextStepData.name}
-              </h3>
-              <p className="text-sm font-normal text-[#464265]">Fecha</p>
-              <h3 className="text-lg font-medium text-[#464265]">
-                {nextStepData.reservationDate}
-              </h3>
-              <p className="text-sm font-normal text-[#464265]">Horario</p>
-              <h3 className="text-lg font-medium text-[#464265]">
-                {nextStepData.turn}
-              </h3>
-            </div>
-            <div className="flex items-center gap-3">
-              <img
-                className="hidden xl:block"
-                src={leftArrow}
-                alt="left arrow"
-              />
-              <p className="hidden text-sm font-normal text-[#ABABAB] xl:block">
-                Puedas verla aquí al lado
-              </p>
-            </div>
-            <button
-              onClick={onClose}
-              className="text-sm font-bold text-[#5F81FF]"
-            >
-              Cerrar
-            </button>
-          </div>
+          <SuccessView nextStepData={nextStepData} onClose={onClose} viewsStates={viewsStates} />
         </form>
       </div>
     </div>

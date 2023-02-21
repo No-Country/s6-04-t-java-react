@@ -1,21 +1,14 @@
-import {
-    swim,
-    dumbbell,
-    grill,
-    tennis,
-    yoga,
-  } from "../../assets/amenitiesIcons/index";
-
+import { swim, dumbbell, grill, tennis, yoga, } from "../../assets/amenitiesIcons/index";
 
 export const reservationReponse = [
     {
     name: "GRILL",
-    reservationDate: "2000-03-16",
+    reservationDate: "2023-02-18",
     tunr: "MORNING"
   },
   {
     name: "SWPOOL",
-    reservationDate: "2022-08-25",
+    reservationDate: "2023-02-20",
     tunr: "NIGHT"
   },
   ]

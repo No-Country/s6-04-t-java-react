@@ -15,7 +15,7 @@ export const postRequest = async (requestData: {}, endpoint: string) => {
 
 export const getRequest = async (endpoint: string) => {
   try {
-    const { data } = await client.get(endpoint);
+    const data = await client.get(endpoint);
     return data;
   } catch (error) {
     if (isClientError(error)) {

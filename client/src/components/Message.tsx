@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import "../pages/message/classMessage.css";
 import { comu } from "../store/messageReducer/message";
+import { TiArrowLeft, TiArrowRight } from "react-icons/ti";
 interface dataTypes {
   type: string;
   from: string;
@@ -44,11 +45,11 @@ export default function Message(data: dataTypes) {
         </div>
       </div>
       <div className="flex gap-4 pl-6">
-        <button className="h-[2.5rem] min-w-[6rem] self-start rounded-[.5rem]  bg-[#C9E6FD]">
-          Responder
+        <button className="flex h-[2.5rem] min-w-[6rem] items-center justify-center self-start rounded-[.5rem] bg-[#C9E6FD] pl-2 pr-2">
+          <TiArrowLeft style={{ fontSize: "2rem" }} /> Responder
         </button>
-        <button className="h-[2.5rem] min-w-[6rem] self-start rounded-[.5rem] bg-[#C9E6FD]">
-          Reenviar
+        <button className="flex h-[2.5rem] min-w-[6rem] items-center justify-center self-start rounded-[.5rem] bg-[#C9E6FD] pl-2 pr-2">
+          <TiArrowRight style={{ fontSize: "2rem" }} /> Reenviar
         </button>
       </div>
     </div>

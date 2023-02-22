@@ -19,8 +19,8 @@ export default function MessageHistory() {
   console.log(dataMessage);
 
   return (
-    <div className="flex h-[80vh] w-[90%] justify-center overflow-y-hidden pl-4">
-      <div className=" h-[100%] w-[90%] overflow-y-scroll rounded-2xl border-none bg-white py-4 px-6">
+    <div className="flex h-[80vh] w-[90%] flex-col justify-between overflow-y-hidden py-2 pl-4">
+      <div className=" h-[65%] w-[90%] overflow-y-scroll rounded-2xl border-none bg-white py-4 px-6">
         <h2 className="mb-4 text-2xl font-semibold">
           Mensajes y Comunicaciones
         </h2>
@@ -40,6 +40,25 @@ export default function MessageHistory() {
             );
           })}
         </div>
+      </div>
+      <div className="relative flex h-[30%] items-end">
+        <form
+          className="relative h-[100%] w-[90%] rounded-2xl border-2 border-solid border-gray bg-white"
+          action=""
+        >
+          <textarea
+            name=""
+            id=""
+            className="h-full w-full rounded-2xl py-2 pl-4 text-[1rem] outline-none"
+          ></textarea>
+        </form>
+
+        <button className="ml-1 h-[2rem] w-[2rem] rounded-[50%] bg-[#fafafa] text-center sm:inline lg:hidden ">
+          S
+        </button>
+        <button className="absolute bottom-2 left-6 h-[3rem] w-[5rem] rounded-[1rem] bg-[#C9E6FD] sm:hidden lg:inline">
+          Enviar
+        </button>
       </div>
     </div>
   );

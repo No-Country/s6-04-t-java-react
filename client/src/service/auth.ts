@@ -1,5 +1,5 @@
 import { BroadcastChannel } from 'broadcast-channel';
-import { loginToAPI } from './apiCall';
+import { postRequest } from './httpRequest';
 
 const sessionChannel = new BroadcastChannel('logout');
 // let accesWithoutToken = false;
@@ -11,8 +11,8 @@ interface Credentials {
 
 const login = (credentials: Credentials, setIsLoadingUser: any) => {
   setIsLoadingUser(true);
-  loginToAPI(credentials).then(
-    ({ jwt }) => {
+  postRequest(credentials, '/auth/login').then(
+    ({ jwt }: any) => {
       localStorage.setItem("token", jwt);
       setIsLoadingUser(false);
       sessionChannel.postMessage("Login");

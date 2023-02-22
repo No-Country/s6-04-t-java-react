@@ -1,4 +1,5 @@
 import React from 'react'
+import BillingForm from './BillingForm/BillingForm'
 
 const Billing = () => {
   return (
@@ -9,7 +10,7 @@ const Billing = () => {
               <div className="w-full max-w-full px-3 mb-4 xl:mb-0 xl:w-1/2 xl:flex-none">
                 <div className="relative flex flex-col min-w-0 break-words bg-transparent border-0 border-transparent border-solid shadow-xl rounded-2xl bg-clip-border">
                   <div className="relative overflow-hidden rounded-2xl" style={{
-background: "linear-gradient(307deg, rgba(2,0,36,1) 0%, rgba(166,34,210,1) 0%, rgba(224,87,255,1) 3%, rgba(209,86,86,1) 100%)"
+background: "linear-gradient(307deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 3%, rgba(69,69,69,1) 100%)"
 
 }}>
                     <span className="absolute top-0 left-0 w-full h-full bg-center bg-cover bg-gradient-to-tl from-gray-900 to-slate-800 opacity-80"></span>
@@ -28,7 +29,7 @@ background: "linear-gradient(307deg, rgba(2,0,36,1) 0%, rgba(166,34,210,1) 0%, r
                           </div>
                         </div>
                         <div className="flex items-end justify-end w-1/5 ml-auto">
-                          <img className="w-3/5 mt-2" src="../assets/img/logos/mastercard.png" alt="logo" />
+                          <img className="w-3/5 mt-2" src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png" alt="logo" />
                         </div>
                       </div>
                     </div>
@@ -40,8 +41,8 @@ background: "linear-gradient(307deg, rgba(2,0,36,1) 0%, rgba(166,34,210,1) 0%, r
                   <div className="w-full max-w-full px-3 md:w-1/2 md:flex-none">
                     <div className="relative flex flex-col min-w-0 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
                       <div className="p-4 mx-6 mb-0 text-center bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
-                        <div className="w-16 h-16 text-center bg-center icon bg-gradient-to-tl from-purple-700 to-pink-500 shadow-soft-2xl rounded-xl">
-                          <i className="relative text-white opacity-100 fas fa-landmark text-xl top-31/100"></i>
+                        <div className="ml-4 w-16 h-16 text-center bg-center icon bg-gradient-to-tl from-[black] to-[gray] shadow-soft-2xl rounded-xl">
+                          <i className="mt-5 relative text-white opacity-100 fas fa-landmark text-xl top-31/100"></i>
                         </div>
                       </div>
                       <div className="flex-auto p-4 pt-0 text-center">
@@ -55,8 +56,8 @@ background: "linear-gradient(307deg, rgba(2,0,36,1) 0%, rgba(166,34,210,1) 0%, r
                   <div className="w-full max-w-full px-3 mt-6 md:mt-0 md:w-1/2 md:flex-none">
                     <div className="relative flex flex-col min-w-0 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
                       <div className="p-4 mx-6 mb-0 text-center bg-white border-b-0 border-b-solid rounded-t-2xl border-b-transparent">
-                        <div className="w-16 h-16 text-center bg-center icon bg-gradient-to-tl from-purple-700 to-pink-500 shadow-soft-2xl rounded-xl">
-                          <i className="relative text-white opacity-100 fab fa-paypal text-xl top-31/100"></i>
+                        <div className="ml-4 w-16 h-16 text-center bg-center icon bg-gradient-to-tl from-[black] to-[gray] shadow-soft-2xl rounded-xl">
+                          <i className="mt-5 relative text-white opacity-100 fab fa-paypal text-xl top-31/100"></i>
                         </div>
                       </div>
                       <div className="flex-auto p-4 pt-0 text-center">
@@ -85,7 +86,7 @@ background: "linear-gradient(307deg, rgba(2,0,36,1) 0%, rgba(166,34,210,1) 0%, r
                     <div className="flex flex-wrap -mx-3">
                       <div className="max-w-full px-3 mb-6 md:mb-0 md:w-1/2 md:flex-none">
                         <div className="relative flex flex-row items-center flex-auto min-w-0 p-6 break-words bg-transparent border border-solid shadow-none rounded-xl border-slate-100 bg-clip-border">
-                          <img className="mb-0 mr-4 w-1/10" src="../assets/img/logos/mastercard.png" alt="logo" />
+                          <img className="mb-0 mr-4 w-[50px]" src="https://upload.wikimedia.org/wikipedia/commons/7/72/MasterCard_early_1990s_logo.png" alt="logo" />
                           <h6 className="mb-0">****&nbsp;&nbsp;&nbsp;****&nbsp;&nbsp;&nbsp;****&nbsp;&nbsp;&nbsp;7852</h6>
                           <i className="ml-auto cursor-pointer fas fa-pencil-alt text-slate-700" data-target="tooltip_trigger" data-placement="top"></i>
                           <div data-target="tooltip" className="hidden px-2 py-1 text-white bg-black rounded-lg text-sm">
@@ -96,7 +97,7 @@ background: "linear-gradient(307deg, rgba(2,0,36,1) 0%, rgba(166,34,210,1) 0%, r
                       </div>
                       <div className="max-w-full px-3 md:w-1/2 md:flex-none">
                         <div className="relative flex flex-row items-center flex-auto min-w-0 p-6 break-words bg-transparent border border-solid shadow-none rounded-xl border-slate-100 bg-clip-border">
-                          <img className="mb-0 mr-4 w-1/10" src="../assets/img/logos/visa.png" alt="logo" />
+                          <img className="mb-0 mr-4 w-[50px]" src="https://logos-world.net/wp-content/uploads/2020/06/Visa-Logo-2014.png" alt="logo" />
                           <h6 className="mb-0">****&nbsp;&nbsp;&nbsp;****&nbsp;&nbsp;&nbsp;****&nbsp;&nbsp;&nbsp;5248</h6>
                           <i className="ml-auto cursor-pointer fas fa-pencil-alt text-slate-700" data-target="tooltip_trigger" data-placement="top"></i>
                           <div data-target="tooltip" className="hidden px-2 py-1 text-white bg-black rounded-lg text-sm">
@@ -119,7 +120,7 @@ background: "linear-gradient(307deg, rgba(2,0,36,1) 0%, rgba(166,34,210,1) 0%, r
                     <h6 className="mb-0">Invoices</h6>
                   </div>
                   <div className="flex-none w-1/2 max-w-full px-3 text-right">
-                    <button className="inline-block px-8 py-2 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border border-solid rounded-lg shadow-none cursor-pointer leading-pro ease-soft-in text-xs bg-150 active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25 border-fuchsia-500 text-fuchsia-500 hover:opacity-75">View All</button>
+                    <button className="inline-block px-8 py-2 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border border-solid rounded-lg shadow-none cursor-pointer leading-pro ease-soft-in text-xs bg-150 active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25 border-[black] text-[black] hover:opacity-75">View All</button>
                   </div>
                 </div>
               </div>
@@ -229,7 +230,7 @@ background: "linear-gradient(307deg, rgba(2,0,36,1) 0%, rgba(166,34,210,1) 0%, r
               </div>
             </div>
           </div>
-          
+          <BillingForm/>
         </div>
     </>
   )

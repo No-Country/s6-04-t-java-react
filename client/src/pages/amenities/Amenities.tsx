@@ -131,7 +131,7 @@ const AmenitiesInfo = () => {
 
 
   // const {data: reservations} = useGetReservation()
-  console.log(reservationData)
+  // console.log(reservations)
 
   return (
     <div className="flex h-full w-full flex-col gap-6 px-6 pb-6 1048:flex-row">
@@ -211,7 +211,7 @@ const AmenitiesInfo = () => {
                         />
                         <label
                           htmlFor={schedule.value}
-                          className="flex h-20 w-20 cursor-pointer flex-col items-center justify-center gap-1 rounded-xl border-2 border-[#5F81FF] text-[10px] peer-checked:bg-[#C9E6FD] peer-disabled:border-[#B5B5B5] peer-disabled:bg-transparent peer-disabled:text-[#B5B5B5] lg:h-24 lg:w-36 lg:text-sm"
+                          className="flex h-20 w-[4.5rem] 450:w-24 cursor-pointer flex-col items-center justify-center gap-1 rounded-xl border-2 border-[#5F81FF] text-[10px] peer-checked:bg-[#C9E6FD] peer-disabled:border-[#B5B5B5] peer-disabled:bg-transparent peer-disabled:text-[#B5B5B5] lg:h-24 lg:w-36 lg:text-sm xl:w-24 xl:h-20 xl:text-xs 1440:w-36 1440:h-24 1440:text-sm"
                         >
                           <span className="flex items-center justify-center text-xl">
                             {schedule.icon}

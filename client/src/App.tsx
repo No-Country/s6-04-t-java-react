@@ -4,7 +4,6 @@ import { Request, Home, Login, Expenses } from "./pages/index";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "./hooks/reduxHooks";
 import { increment } from "./store/slices/counter.slice";
-import ExpensesHistory from "./pages/expenses/ExpensesHistory";
 import { Amenities } from "./pages/index";
 import MessageHistory from "./pages/message/MessageHistory";
 import MenuLogin from "./pages/login/MenuLogin";
@@ -35,7 +34,7 @@ function App() {
             <Route path="/request" element={<Request />} />
             <Route path="/main" element={<Main />} />
             <Route path="/amenities" element={<Amenities />} />
-            <Route path="/expenses" element={<ExpensesHistory />} />
+            <Route path="/expenses" element={<Expenses />} />
             <Route path="/message" element={<MessageHistory />} />
             <Route path="/statistics" element={<Statistics />} />
             <Route path="/billing" element={<Billing />} />

@@ -12,7 +12,7 @@ import { amenities } from "./data";
 import SuccessView from "./SuccessView";
 import CommonSpaces from "./CommonSpaces";
 import Reservations from "./Reservations";
-import { Reservation, Schedule } from "../../models/Amenities";
+import { Reservation, Schedule, Schedules } from "../../models/Amenities";
 
 export type NextStepData = {
   name: string;
@@ -26,7 +26,7 @@ export type ViewState = {
   showSuccessView: boolean
   showTurns: boolean}
 
-export type Schedules = Schedule[];
+
 
 const schedules: Schedules = [
   {
@@ -128,10 +128,6 @@ const AmenitiesInfo = () => {
   };
 
   const disabledDates = [new Date("2023-02-20"), new Date("2023-02-22"),new Date("2023-02-28"), new Date("2023-01-27")]
-
-
-  // const {data: reservations} = useGetReservation()
-  // console.log(reservations)
 
   return (
     <div className="flex h-full w-full flex-col gap-6 px-6 pb-6 1048:flex-row">

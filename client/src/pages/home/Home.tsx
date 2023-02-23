@@ -1,5 +1,4 @@
 import Amenities from "../amenities/Amenities";
-import Expenses from "../expenses/Expenses";
 import Message from "../../components/Message";
 import { BillingResume } from "../expenses/BillingResume";
 

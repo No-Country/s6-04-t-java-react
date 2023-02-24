@@ -55,7 +55,7 @@ export default function Sidebar() {
 
   const handleLogout = () => {
     logout();
-    navigate(0); // (0) means Reload page
+    navigate();
   };
 
   const [menuIsOpen, setMenuIsOpen] = useState(false);

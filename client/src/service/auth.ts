@@ -36,11 +36,11 @@ const checkBroadcastToLogOutInAllTabs = (navigateTo: any) => {
   sessionChannel.onmessage = (e) => {
     if (e === 'Logout') {
       // if (accesWithoutToken) { return }
-      navigateTo(0);
+      navigateTo();
     }
 
     if (e === 'Login') {
-      navigateTo(0);
+      navigateTo();
     }
   };
 };

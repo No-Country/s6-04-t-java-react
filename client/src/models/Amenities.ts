@@ -7,10 +7,20 @@ export type Schedule = {
   
   export type Schedules = Schedule[];
 
+  export type ReservationResponse = {
+    name: string | "GRILL" | "SWPOOL" | "GYM" | "TENNIS" | "LOUNGE";
+    reservationDate: string 
+    tunr: string | "MORNING" | "AFTERNOON" | "NIGHT";
+    reservationID?: number
+  };
+
+  export type ReservationList = ReservationResponse[];
+
   export type Reservation = {
     name: string | "GRILL" | "SWPOOL" | "GYM" | "TENNIS" | "LOUNGE";
-    reservationDate: Date | null;
-    turn: string | "MORNING" | "AFTERNOON" | "NIGHT";
-  };
+      reservationDate: Date | null 
+      turn: string | "MORNING" | "AFTERNOON" | "NIGHT";
+  }
+
 
   

@@ -14,7 +14,7 @@ const Login = () => {
 
   useEffect(() => {
     if (checkUserToken) navigate("/home");
-  }, [checkUserToken, isLoadingUser]);
+  }, [checkUserToken]);
 
   const {
     register,

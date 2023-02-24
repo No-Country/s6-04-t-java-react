@@ -11,7 +11,7 @@ const client = axios.create({
 const isClientError = axios.isAxiosError;
 
 client.interceptors.request.use(
-  (config) => {
+  (config: any) => {
     const token = localStorage.getItem("token");
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;

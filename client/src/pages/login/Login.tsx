@@ -155,7 +155,7 @@ const Login = () => {
                 }}
               >
                 {isInvalidCredentials &&
-                  "Nombre de usuario y/o contraseña incorrectos"}
+                  "Correo elctrónico y/o contraseña incorrectos"}
               </div>
             </div>
             <button

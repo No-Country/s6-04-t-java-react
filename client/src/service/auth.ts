@@ -9,15 +9,18 @@ interface Credentials {
   password: string;
 }
 
-const login = (credentials: Credentials, setIsLoadingUser: any) => {
+const login = (credentials: Credentials, setIsLoadingUser: any, setIsInvalidCredentials: any) => {
   setIsLoadingUser(true);
+  setIsInvalidCredentials(false);
   postRequest(credentials, '/auth/login').then(
     ({ jwt }: any) => {
       localStorage.setItem("token", jwt);
       setIsLoadingUser(false);
       sessionChannel.postMessage("Login");
     }
-  );
+  ).catch((err) => {
+    if (err) { setIsInvalidCredentials(true); setIsLoadingUser(false); }
+  });
 };
 
 const checkToken = () => {

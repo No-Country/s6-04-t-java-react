@@ -1,8 +1,11 @@
 import { BroadcastChannel } from 'broadcast-channel';
 import { postRequest } from './httpRequest';
+import { getURLComplement } from './urlComplements';
 
 const sessionChannel = new BroadcastChannel('logout');
 // let accesWithoutToken = false;
+
+const getURL = getURLComplement();
 
 interface Credentials {
   email: string;
@@ -12,7 +15,7 @@ interface Credentials {
 const login = (credentials: Credentials, setIsLoadingUser: any, setIsInvalidCredentials: any) => {
   setIsLoadingUser(true);
   setIsInvalidCredentials(false);
-  postRequest(credentials, '/auth/login').then(
+  postRequest(credentials, getURL.login()).then(
     ({ jwt }: any) => {
       localStorage.setItem("token", jwt);
       setIsLoadingUser(false);

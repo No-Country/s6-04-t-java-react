@@ -91,7 +91,7 @@ const SignUp = () => {
               className="mt-1 mb-4 font-Poppins font-bold"
               style={{ color: "#464265", fontSize: "11px", lineHeight: "12px" }}
             >
-              Si es tu primera vez aqui, crea tu cuenta
+              Si es tu primera vez aquí, crea tu cuenta
             </div>
             <form className="flex flex-col ">
               <div className="flex flex-col">
@@ -297,7 +297,7 @@ const SignUp = () => {
                       evt.preventDefault()
                     }
                     {...register("apartmentNumber" as never, {
-                      required: "Debes ingresar un piso",
+                      required: "Debes ingresar un número de apartamento",
                       validate: (value: number) => {
                         if (value <= 0) {
                           return "El número debe ser mayor o igual a 1";

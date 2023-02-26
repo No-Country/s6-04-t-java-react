@@ -6,27 +6,14 @@ import {
 import { useState } from "react";
 import { Calendar } from "react-calendar";
 import "./styles.css";
-import { useGetReservation } from "../../hooks/useAmenity";
-import axios from "axios";
+import { useCreateReservation } from "../../hooks/useAmenity";
 import { amenities } from "./data";
 import SuccessView from "./SuccessView";
 import CommonSpaces from "./CommonSpaces";
 import Reservations from "./Reservations";
-import { Reservation, Schedule, Schedules } from "../../models/Amenities";
-
-export type NextStepData = {
-  name: string;
-  reservationDate: string;
-  turn: string;
-};
-
-export type ViewState = {
-  showCalendar: boolean
-  showNextStep: boolean
-  showSuccessView: boolean
-  showTurns: boolean}
-
-
+import { NextStepData, Reservation, Schedule, Schedules, ViewState } from "../../models/Amenities";
+import { useQueryClient } from "react-query";
+import ErrorView from "./ErrorView";
 
 const schedules: Schedules = [
   {
@@ -51,15 +38,24 @@ const schedules: Schedules = [
 
 const initStateReservationData = {
   name: "",
-  reservationDate: null,
+  reservationDate: '',
   turn: "",
 };
 
 const initViewsState: ViewState = {
   showCalendar: false,
   showNextStep: false,
+  showErrorView: false,
   showSuccessView: false,
   showTurns: false
+}
+
+const formatDate = (date: Date) => {
+  return [
+    date.getFullYear(),
+    ('0' + (date.getMonth() + 1)).slice(-2),
+    ('0' + date.getDate()).slice(-2)
+  ].join('-');
 }
 
 const AmenitiesInfo = () => {
@@ -73,11 +69,13 @@ const AmenitiesInfo = () => {
     reservationDate: "",
     turn: "",
   } as NextStepData);
+  const queryClient = useQueryClient()
 
+  
   const onClickDay = () => {
     setViewsStates((prev) => ({...prev, showTurns: true}))
   };
-
+  
   const onChangeSelectAmenity = (e: React.ChangeEvent<HTMLSelectElement>) => {
     SetReservationData((prev) => ({ ...prev, name: e.target.value }));
     SetNextStepData((prev) => ({
@@ -86,10 +84,12 @@ const AmenitiesInfo = () => {
     }));
     setViewsStates((prev) => ({...prev, showCalendar: true}))
   };
-
+  
   const changeDate = (e: Date) => {
     setDate(e);
-    SetReservationData((prev) => ({ ...prev, reservationDate: e }));
+    console.log(e.toLocaleDateString('es-ES', {year: 'numeric', month: 'numeric', day: 'numeric'}))
+    console.log(formatDate(e))
+    SetReservationData((prev) => ({ ...prev, reservationDate: formatDate(e) }));
     SetNextStepData((prev) => ({
       ...prev,
       reservationDate: e.toLocaleDateString("es-ES", {
@@ -100,33 +100,40 @@ const AmenitiesInfo = () => {
       }),
     }));
   };
-
+  
   const onChangeHours = (e: React.ChangeEvent<HTMLInputElement>) => {
     SetReservationData((prev) => ({ ...prev, turn: e.target.value }));
     const time = e.target.labels![0].childNodes[1].textContent;
     const range = e.target.labels![0].childNodes[2].textContent;
-
+    
     const hour = `${time} - ${range}`;
     SetNextStepData((prev) => ({ ...prev, turn: hour }));
   };
-
+  
   const onClickReservation = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     setViewsStates((prev) => ({...prev, showNextStep: true}))
   };
-
-  const onClickConfirm = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    setViewsStates((prev) => ({...prev, showNextStep: false, showSuccessView: true}))
-    console.log(reservationData)
-  };
-
+  
   const onClose = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     SetReservationData(initStateReservationData);
     setViewsStates(initViewsState)
   };
-
+  
+  const onSuccess = () => {
+    queryClient.invalidateQueries(['amenityReservations'])
+    setViewsStates((prev) => ({...prev, showNextStep: false, showSuccessView: true}))
+  }
+  const onError = () => {
+    setViewsStates((prev) => ({...prev, showNextStep: false, showErrorView: true}))
+  }
+  const { mutate, isLoading, error } = useCreateReservation(onSuccess, onError)
+  
+  const onClickConfirm = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    mutate(reservationData)
+  };
   const disabledDates = [new Date("2023-02-20"), new Date("2023-02-22"),new Date("2023-02-28"), new Date("2023-01-27")]
 
   return (
@@ -138,7 +145,7 @@ const AmenitiesInfo = () => {
       <div className="h-full w-full rounded-2xl bg-white py-4 px-6">
         <h2
           className={`${
-            viewsStates.showSuccessView ? "hidden" : "flex"
+            viewsStates.showSuccessView || viewsStates.showErrorView ? "hidden" : "flex"
           } mb-3 text-2xl font-semibold`}
         >
           Realizar una reserva
@@ -151,7 +158,7 @@ const AmenitiesInfo = () => {
         >
           <div
             className={`${
-              viewsStates.showNextStep || viewsStates.showSuccessView ? "hidden" : "flex"
+              viewsStates.showNextStep || viewsStates.showSuccessView || viewsStates.showErrorView ? "hidden" : "flex"
             } flex-col items-center gap-2 font-Poppins`}
           >
             <label
@@ -275,6 +282,7 @@ const AmenitiesInfo = () => {
             </div>
           </div>
           <SuccessView nextStepData={nextStepData} onClose={onClose} viewsStates={viewsStates} />
+          <ErrorView onClose={onClose} viewsStates={viewsStates}/>
         </form>
       </div>
     </div>

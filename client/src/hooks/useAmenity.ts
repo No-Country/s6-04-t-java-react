@@ -1,6 +1,7 @@
 import {useMutation, useQuery, useQueryClient} from 'react-query'
 import { ReservationList, Reservation } from '../models/Amenities';
 import { getRequest, postRequest } from '../service/httpRequest';
+import { getURLComplement } from '../service/urlComplements';
 
 type Query = {
     onSuccess: () => void
@@ -8,10 +9,10 @@ type Query = {
 }
 
 
+const getURL = getURLComplement();
 
-
-const getReservations = () => getRequest('/reservations/list');
-const createReservations = (data:Reservation) => postRequest(data,'/reservations/amenities');
+const getReservations = () => getRequest(getURL.reservationsList());
+const createReservations = (data: Reservation) => postRequest(data, getURL.reservationsAmenities()+'asdasdas');
 
 
 export const useGetReservation = () =>
@@ -20,12 +21,12 @@ export const useGetReservation = () =>
     onError: (error) => error
   })
 
-export const useMakeReservation = (data: Reservation) => {
-  const queryClient = useQueryClient()
-  return useMutation(() => createReservations(data), {
-    onSuccess: () => {
-      queryClient.invalidateQueries(['amenityReservations'])
-    },
-    onError: (error) =>  console.log(error)
-  })
-}
+export const useCreateReservation = (
+  onSuccess: (data: {}) => void,
+  onError: (error: {}) => void
+) => {
+  return useMutation(["createReservation"], createReservations, {
+    onSuccess,
+    onError,
+  });
+};

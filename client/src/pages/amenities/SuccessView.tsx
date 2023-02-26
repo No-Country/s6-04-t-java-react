@@ -1,6 +1,6 @@
-import { NextStepData, ViewState } from "./Amenities";
 import { successIcon, leftArrow } from "../../assets/amenitiesIcons/index";
 import { BsXLg } from "react-icons/bs";
+import { NextStepData, ViewState } from "../../models/Amenities";
 
 type Props = {
     viewsStates: ViewState

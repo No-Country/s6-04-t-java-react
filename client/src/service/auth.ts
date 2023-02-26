@@ -11,6 +11,27 @@ interface Credentials {
   email: string;
   password: string;
 }
+interface NewUser {
+  email: string;
+  password: string;
+  firstName: string;
+  lastName: string;
+  apartmentNumber: number;
+  floor: string;
+}
+
+const signUp = (newUser: NewUser, setUserCreated: any, setIsRegisteringUser: any, setIsError: any) => {
+  setIsRegisteringUser(true);
+  setIsError(false);
+  postRequest(newUser, getURL.register()).then(
+    (res: any) => {
+      setUserCreated(res.email, res.firstName, res.lastName, res.apartmentNumber, res.floor);
+      setIsRegisteringUser(false);
+    }
+  ).catch((err) => {
+    if (err) { setIsError(true); setIsRegisteringUser(false); }
+  });
+};
 
 const login = (credentials: Credentials, setIsLoadingUser: any, setIsInvalidCredentials: any) => {
   setIsLoadingUser(true);
@@ -51,4 +72,4 @@ const checkBroadcastToLogOutInAllTabs = (navigateTo: any) => {
   };
 };
 
-export { login, checkToken, logout, checkBroadcastToLogOutInAllTabs };
+export { signUp, login, checkToken, logout, checkBroadcastToLogOutInAllTabs };

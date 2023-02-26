@@ -12,7 +12,7 @@ type Query = {
 const getURL = getURLComplement();
 
 const getReservations = () => getRequest(getURL.reservationsList());
-const createReservations = (data: Reservation) => postRequest(data, getURL.reservationsAmenities()+'asdasdas');
+const createReservations = (data: Reservation) => postRequest(data, getURL.reservationsAmenities());
 
 
 export const useGetReservation = () =>

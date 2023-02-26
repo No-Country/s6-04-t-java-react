@@ -56,11 +56,12 @@ const reservationNumberDay = (date: string) => {
     }
 
     const {data: reservations, isLoading} = useGetReservation()
+    console.log(reservations)
 
   return (
     <div className="h-full  rounded-2xl bg-white py-4 px-6 ">
           <h2 className="mb-3 text-2xl font-semibold">Mis reservas</h2>
-          <div className="flex max-h-full flex-col gap-2 overflow-scroll">
+          <div className="flex max-h-96 flex-col gap-2 overflow-scroll">
             {isLoading ?
              <div className="text-center mt-3">Cargando...</div>
             :

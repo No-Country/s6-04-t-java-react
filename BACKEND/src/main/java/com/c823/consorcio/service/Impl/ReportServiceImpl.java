@@ -40,10 +40,13 @@ public class ReportServiceImpl implements IReportService {
 
   @Override
   public List<ReportBasicDto> getListReports() {
+    String email = SecurityContextHolder.getContext().getAuthentication().getName();
+    UserEntity user = userRepository.findByEmail(email);
+    Long userId = user.getUserId();
 
 
 
-    return reportMap.reportEntityList2DtoBasicList(reportRepository.findAll());
+    return reportMap.reportEntityList2DtoBasicList(reportRepository.findByuser(user));
   }
 
 }

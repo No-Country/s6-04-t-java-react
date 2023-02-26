@@ -97,8 +97,11 @@ public class UserDetailsCustomService implements UserDetailsService {
       UserDetails userDetails;
       Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
               authenticationRequest.getEmail(), authenticationRequest.getPassword()));
+
+
       userDetails = (UserDetails) authentication.getPrincipal();
       final String jwt = jwtTokenUtils.generateToken(userDetails);
+
       return new AuthenticationResponse(jwt);
     }
 

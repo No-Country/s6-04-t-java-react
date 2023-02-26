@@ -183,6 +183,7 @@ const Login = () => {
                 fontSize: "10px",
                 lineHeight: "11px",
               }}
+              onClick={()=>navigate('/signup')}
             >
               REGISTRARSE
             </div>

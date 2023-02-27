@@ -1,4 +1,5 @@
 import { useGetReservation } from "../../hooks/useAmenity"
+import { ReservationList } from "../../models/Amenities"
 
 const reservationTurn = (turn: string) => {
     switch (turn) {
@@ -40,8 +41,13 @@ const reservationAmenity = (amenity: string) => {
 
 }
 
+type Props = {
+  reservations: ReservationList
+  isLoading: boolean
+}
 
-const Reservations = () => {
+
+const Reservations = ({reservations, isLoading}: Props) => {
 
 const reservationMonth = (date: string) => {
     const turnToDate = new Date(date)
@@ -55,8 +61,7 @@ const reservationNumberDay = (date: string) => {
     return numberDay
     }
 
-    const {data: reservations, isLoading} = useGetReservation()
-    console.log(reservations)
+    // const {data: reservations, isLoading} = useGetReservation()
 
   return (
     <div className="h-full  rounded-2xl bg-white py-4 px-6 ">

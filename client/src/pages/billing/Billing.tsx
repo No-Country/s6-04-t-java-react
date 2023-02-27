@@ -1,5 +1,6 @@
 import React from 'react'
 import BillingForm from './BillingForm/BillingForm'
+import ViewReceipt from './ViewReceipt/ViewReceipt'
 
 const Billing = () => {
   return (
@@ -133,49 +134,12 @@ background: "linear-gradient(307deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 0%, rgba(0,
                     </div>
                     <div className="flex items-center leading-normal text-sm">
                       $180
-                      <button className="inline-block px-0 py-3 mb-0 ml-6 font-bold leading-normal text-center uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer ease-soft-in bg-150 text-sm active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25 text-slate-700"><i className="mr-1 fas fa-file-pdf text-lg"></i> PDF</button>
+                      <button className="inline-block px-0 py-3 mb-0 ml-6 font-bold leading-normal text-center uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer ease-soft-in bg-150 text-sm active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25 text-slate-700"><ViewReceipt/> </button>
                     </div>
                   </li>
-                  <li className="relative flex justify-between px-4 py-2 pl-0 mb-2 bg-white border-0 rounded-xl text-inherit">
-                    <div className="flex flex-col">
-                      <h6 className="mb-1 font-semibold leading-normal text-sm text-slate-700">February, 10, 2021</h6>
-                      <span className="leading-tight text-xs">#RV-126749</span>
-                    </div>
-                    <div className="flex items-center leading-normal text-sm">
-                      $250
-                      <button className="inline-block px-0 py-3 mb-0 ml-6 font-bold leading-normal text-center uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer ease-soft-in bg-150 text-sm active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25 text-slate-700"><i className="mr-1 fas fa-file-pdf text-lg"></i> PDF</button>
-                    </div>
-                  </li>
-                  <li className="relative flex justify-between px-4 py-2 pl-0 mb-2 bg-white border-0 rounded-xl text-inherit">
-                    <div className="flex flex-col">
-                      <h6 className="mb-1 font-semibold leading-normal text-sm text-slate-700">April, 05, 2020</h6>
-                      <span className="leading-tight text-xs">#FB-212562</span>
-                    </div>
-                    <div className="flex items-center leading-normal text-sm">
-                      $560
-                      <button className="inline-block px-0 py-3 mb-0 ml-6 font-bold leading-normal text-center uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer ease-soft-in bg-150 text-sm active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25 text-slate-700"><i className="mr-1 fas fa-file-pdf text-lg"></i> PDF</button>
-                    </div>
-                  </li>
-                  <li className="relative flex justify-between px-4 py-2 pl-0 mb-2 bg-white border-0 rounded-xl text-inherit">
-                    <div className="flex flex-col">
-                      <h6 className="mb-1 font-semibold leading-normal text-sm text-slate-700">June, 25, 2019</h6>
-                      <span className="leading-tight text-xs">#QW-103578</span>
-                    </div>
-                    <div className="flex items-center leading-normal text-sm">
-                      $120
-                      <button className="inline-block px-0 py-3 mb-0 ml-6 font-bold leading-normal text-center uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer ease-soft-in bg-150 text-sm active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25 text-slate-700"><i className="mr-1 fas fa-file-pdf text-lg"></i> PDF</button>
-                    </div>
-                  </li>
-                  <li className="relative flex justify-between px-4 py-2 pl-0 bg-white border-0 rounded-b-inherit rounded-xl text-inherit">
-                    <div className="flex flex-col">
-                      <h6 className="mb-1 font-semibold leading-normal text-sm text-slate-700">March, 01, 2019</h6>
-                      <span className="leading-tight text-xs">#AR-803481</span>
-                    </div>
-                    <div className="flex items-center leading-normal text-sm">
-                      $300
-                      <button className="inline-block px-0 py-3 mb-0 ml-6 font-bold leading-normal text-center uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer ease-soft-in bg-150 text-sm active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25 text-slate-700"><i className="mr-1 fas fa-file-pdf text-lg"></i> PDF</button>
-                    </div>
-                  </li>
+                  
+                  
+                  
                 </ul>
               </div>
             </div>
@@ -190,47 +154,23 @@ background: "linear-gradient(307deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 0%, rgba(0,
               </div>
               <div className="flex-auto p-4 pt-6">
                 <ul className="flex flex-col pl-0 mb-0 rounded-lg">
-                  <li className="relative flex p-6 mb-2 border-0 rounded-t-inherit rounded-xl bg-gray-50">
-                    <div className="flex flex-col">
-                      <h6 className="mb-4 leading-normal text-sm">Oliver Liam</h6>
-                      <span className="mb-2 leading-tight text-xs">Company Name: <span className="font-semibold text-slate-700 sm:ml-2">Viking Burrito</span></span>
-                      <span className="mb-2 leading-tight text-xs">Email Address: <span className="font-semibold text-slate-700 sm:ml-2">oliver@burrito.com</span></span>
-                      <span className="leading-tight text-xs">VAT Number: <span className="font-semibold text-slate-700 sm:ml-2">FRB1235476</span></span>
-                    </div>
-                    <div className="ml-auto text-right">
-                      <a className="relative z-10 inline-block px-4 py-3 mb-0 font-bold text-center text-transparent uppercase align-middle transition-all border-0 rounded-lg shadow-none cursor-pointer leading-pro text-xs ease-soft-in bg-150 bg-gradient-to-tl from-red-600 to-rose-400 hover:scale-102 active:opacity-85 bg-x-25 bg-clip-text" href="javascript:;"><i className="mr-2 far fa-trash-alt bg-150 bg-gradient-to-tl from-red-600 to-rose-400 bg-x-25 bg-clip-text"></i>Delete</a>
-                      <a className="inline-block px-4 py-3 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer leading-pro text-xs ease-soft-in bg-150 hover:scale-102 active:opacity-85 bg-x-25 text-slate-700" href="javascript:;"><i className="mr-2 fas fa-pencil-alt text-slate-700" aria-hidden="true"></i>Edit</a>
-                    </div>
-                  </li>
-                  <li className="relative flex p-6 mt-4 mb-2 border-0 rounded-xl bg-gray-50">
-                    <div className="flex flex-col">
-                      <h6 className="mb-4 leading-normal text-sm">Lucas Harper</h6>
-                      <span className="mb-2 leading-tight text-xs">Company Name: <span className="font-semibold text-slate-700 sm:ml-2">Stone Tech Zone</span></span>
-                      <span className="mb-2 leading-tight text-xs">Email Address: <span className="font-semibold text-slate-700 sm:ml-2">lucas@stone-tech.com</span></span>
-                      <span className="leading-tight text-xs">VAT Number: <span className="font-semibold text-slate-700 sm:ml-2">FRB1235476</span></span>
-                    </div>
-                    <div className="ml-auto text-right">
-                      <a className="relative z-10 inline-block px-4 py-3 mb-0 font-bold text-center text-transparent uppercase align-middle transition-all border-0 rounded-lg shadow-none cursor-pointer leading-pro text-xs ease-soft-in bg-150 bg-gradient-to-tl from-red-600 to-rose-400 hover:scale-102 active:opacity-85 bg-x-25 bg-clip-text" href="javascript:;"><i className="mr-2 far fa-trash-alt bg-150 bg-gradient-to-tl from-red-600 to-rose-400 bg-x-25 bg-clip-text"></i>Delete</a>
-                      <a className="inline-block px-4 py-3 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer leading-pro text-xs ease-soft-in bg-150 hover:scale-102 active:opacity-85 bg-x-25 text-slate-700" href="javascript:;"><i className="mr-2 fas fa-pencil-alt text-slate-700" aria-hidden="true"></i>Edit</a>
-                    </div>
-                  </li>
                   <li className="relative flex p-6 mt-4 mb-2 border-0 rounded-b-inherit rounded-xl bg-gray-50">
                     <div className="flex flex-col">
                       <h6 className="mb-4 leading-normal text-sm">Ethan James</h6>
-                      <span className="mb-2 leading-tight text-xs">Company Name: <span className="font-semibold text-slate-700 sm:ml-2">Fiber Notion</span></span>
+                      <span className="mb-2 leading-tight text-xs">Bank: <span className="font-semibold text-slate-700 sm:ml-2">Fiber Notion</span></span>
                       <span className="mb-2 leading-tight text-xs">Email Address: <span className="font-semibold text-slate-700 sm:ml-2">ethan@fiber.com</span></span>
+                      <span className="mb-2 leading-tight text-xs">Phone Number: <span className="font-semibold text-slate-700 sm:ml-2">0995426348</span></span>
                       <span className="leading-tight text-xs">VAT Number: <span className="font-semibold text-slate-700 sm:ml-2">FRB1235476</span></span>
                     </div>
                     <div className="ml-auto text-right">
                       <a className="relative z-10 inline-block px-4 py-3 mb-0 font-bold text-center text-transparent uppercase align-middle transition-all border-0 rounded-lg shadow-none cursor-pointer leading-pro text-xs ease-soft-in bg-150 bg-gradient-to-tl from-red-600 to-rose-400 hover:scale-102 active:opacity-85 bg-x-25 bg-clip-text" href="javascript:;"><i className="mr-2 far fa-trash-alt bg-150 bg-gradient-to-tl from-red-600 to-rose-400 bg-x-25 bg-clip-text"></i>Delete</a>
-                      <a className="inline-block px-4 py-3 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer leading-pro text-xs ease-soft-in bg-150 hover:scale-102 active:opacity-85 bg-x-25 text-slate-700" href="javascript:;"><i className="mr-2 fas fa-pencil-alt text-slate-700" aria-hidden="true"></i>Edit</a>
+                      <a className="inline-block px-4 py-3 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer leading-pro text-xs ease-soft-in bg-150 hover:scale-102 active:opacity-85 bg-x-25 text-slate-700" href="javascript:;"><BillingForm/></a>
                     </div>
                   </li>
                 </ul>
               </div>
             </div>
           </div>
-          <BillingForm/>
         </div>
     </>
   )

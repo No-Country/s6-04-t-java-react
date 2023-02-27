@@ -1,5 +1,4 @@
-import { reservationReponse } from "./data"
-
+import { useGetReservation } from "../../hooks/useAmenity"
 
 const reservationTurn = (turn: string) => {
     switch (turn) {
@@ -56,16 +55,23 @@ const reservationNumberDay = (date: string) => {
     return numberDay
     }
 
+    const {data: reservations, isLoading} = useGetReservation()
+    console.log(reservations)
+
   return (
     <div className="h-full  rounded-2xl bg-white py-4 px-6 ">
           <h2 className="mb-3 text-2xl font-semibold">Mis reservas</h2>
           <div className="flex max-h-96 flex-col gap-2 overflow-scroll">
-            {reservationReponse.length > 0 ? (
-              reservationReponse.map((reservation) => (
+            {isLoading ?
+             <div className="text-center mt-3">Cargando...</div>
+            :
+            <>
+            {reservations ? (
+              reservations.map((reservation) => (
                 <div
-                  key={reservation.reservationDate}
+                  key={reservation.reservationDate + reservation.reservationId}
                   className="flex w-full items-center justify-start gap-6 rounded-2xl bg-[#F4F5FA] px-3 py-2 font-Poppins"
-                >
+                  >
                   <div className="w-16 bg-white text-center">
                     <h3 className="text-3xl font-semibold">
                       {reservationNumberDay(reservation.reservationDate)}
@@ -79,16 +85,18 @@ const reservationNumberDay = (date: string) => {
                       {reservationAmenity(reservation.name)}
                     </h3>
                     <p className="text-sm font-normal text-[#6F6F6F]">
-                      {reservationTurn(reservation.tunr)}
+                      {reservationTurn(reservation.turn)}
                     </p>
                   </div>
                 </div>
               ))
-            ) : (
-              <p className="mt-10 text-center text-[#BABABA]">
+              ) : (
+                <p className="mt-10 text-center text-[#BABABA]">
                 No tienes ninguna reserva en tu calendario
               </p>
             )}
+            </>
+            }
           </div>
         </div>
   )

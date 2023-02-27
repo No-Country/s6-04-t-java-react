@@ -2,7 +2,7 @@ package com.c823.consorcio.enums;
 
 public enum Turn {
 
-    DIA("DIA"), TARDE("TARDE"), NOCHE("NOCHE");
+    MORNING("MORNING"), AFTERNOON("AFTERNOON"), NIGHT("NIGHT");
 
     private final String name ;
 

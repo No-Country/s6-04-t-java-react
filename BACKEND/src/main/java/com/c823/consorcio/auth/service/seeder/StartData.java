@@ -50,9 +50,9 @@ public class StartData {
     }
 
     private void createTurns() {
-        this.createTurn(1L, Turn.DIA);
-        this.createTurn(2L, Turn.TARDE);
-        this.createTurn(3L, Turn.NOCHE);
+        this.createTurn(1L, Turn.MORNING);
+        this.createTurn(2L, Turn.AFTERNOON);
+        this.createTurn(3L, Turn.NIGHT);
     }
 
     private void createTurn(long l, Turn name) {
@@ -63,10 +63,10 @@ public class StartData {
     }
     private void createAmenities() {
         this.createAmenitie(1L, Amenities.GYM);
-        this.createAmenitie(2L, Amenities.PARRILLA);
-        this.createAmenitie(3L, Amenities.SALON);
-        this.createAmenitie(4L, Amenities.PISCINA);
-        this.createAmenitie(5L, Amenities.TENIS);
+        this.createAmenitie(2L, Amenities.GRILL);
+        this.createAmenitie(3L, Amenities.LOUNGE);
+        this.createAmenitie(4L, Amenities.SWPOOL);
+        this.createAmenitie(5L, Amenities.TENNIS);
     }
 
     private void createAmenitie(Long l, Amenities name) {

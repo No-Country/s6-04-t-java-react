@@ -33,6 +33,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/signup" element={<SignUp/>} />
+            <Route path="/billing" element={<Billing />} />
           <Route element={<PrivateLayout />}>
             <Route path="/request" element={<Request />} />
             <Route path="/main" element={<Main />} />
@@ -40,7 +41,6 @@ function App() {
             <Route path="/expenses" element={<Expenses />} />
             <Route path="/message" element={<MessageHistory />} />
             <Route path="/statistics" element={<Statistics />} />
-            <Route path="/billing" element={<Billing />} />
 
             <Route path="/home" element={<Home />} />
           </Route>

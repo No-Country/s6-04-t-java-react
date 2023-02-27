@@ -1,6 +1,5 @@
 import { useGetReservation } from "../../hooks/useAmenity"
 
-
 const reservationTurn = (turn: string) => {
     switch (turn) {
         case 'MORNING':
@@ -57,6 +56,7 @@ const reservationNumberDay = (date: string) => {
     }
 
     const {data: reservations, isLoading} = useGetReservation()
+    console.log(reservations)
 
   return (
     <div className="h-full  rounded-2xl bg-white py-4 px-6 ">
@@ -69,7 +69,7 @@ const reservationNumberDay = (date: string) => {
             {reservations ? (
               reservations.map((reservation) => (
                 <div
-                  key={reservation.reservationDate}
+                  key={reservation.reservationDate + reservation.reservationId}
                   className="flex w-full items-center justify-start gap-6 rounded-2xl bg-[#F4F5FA] px-3 py-2 font-Poppins"
                   >
                   <div className="w-16 bg-white text-center">
@@ -85,7 +85,7 @@ const reservationNumberDay = (date: string) => {
                       {reservationAmenity(reservation.name)}
                     </h3>
                     <p className="text-sm font-normal text-[#6F6F6F]">
-                      {reservationTurn(reservation.tunr)}
+                      {reservationTurn(reservation.turn)}
                     </p>
                   </div>
                 </div>

@@ -6,27 +6,21 @@ import {
 import { useState } from "react";
 import { Calendar } from "react-calendar";
 import "./styles.css";
-import { useGetReservation } from "../../hooks/useAmenity";
-import axios from "axios";
+import { useCreateReservation } from "../../hooks/useAmenity";
 import { amenities } from "./data";
 import SuccessView from "./SuccessView";
 import CommonSpaces from "./CommonSpaces";
 import Reservations from "./Reservations";
-import { Reservation, Schedule, Schedules } from "../../models/Amenities";
-
-export type NextStepData = {
-  name: string;
-  reservationDate: string;
-  turn: string;
-};
-
-export type ViewState = {
-  showCalendar: boolean
-  showNextStep: boolean
-  showSuccessView: boolean
-  showTurns: boolean}
-
-
+import {
+  NextStepData,
+  Reservation,
+  Schedule,
+  Schedules,
+  ViewState,
+} from "../../models/Amenities";
+import { useQueryClient } from "react-query";
+import ErrorView from "./ErrorView";
+import { formatDate } from "../../service/formatDate";
 
 const schedules: Schedules = [
   {
@@ -51,19 +45,20 @@ const schedules: Schedules = [
 
 const initStateReservationData = {
   name: "",
-  reservationDate: null,
+  reservationDate: "",
   turn: "",
 };
 
 const initViewsState: ViewState = {
   showCalendar: false,
   showNextStep: false,
+  showErrorView: false,
   showSuccessView: false,
-  showTurns: false
-}
+  showTurns: false,
+};
 
 const AmenitiesInfo = () => {
-  const [viewsStates, setViewsStates] = useState(initViewsState)
+  const [viewsStates, setViewsStates] = useState(initViewsState);
   const [date, setDate] = useState(new Date());
   const [reservationData, SetReservationData] = useState(
     initStateReservationData as Reservation
@@ -73,9 +68,10 @@ const AmenitiesInfo = () => {
     reservationDate: "",
     turn: "",
   } as NextStepData);
+  const queryClient = useQueryClient();
 
   const onClickDay = () => {
-    setViewsStates((prev) => ({...prev, showTurns: true}))
+    setViewsStates((prev) => ({ ...prev, showTurns: true }));
   };
 
   const onChangeSelectAmenity = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -84,12 +80,12 @@ const AmenitiesInfo = () => {
       ...prev,
       name: e.target.selectedOptions[0].innerText,
     }));
-    setViewsStates((prev) => ({...prev, showCalendar: true}))
+    setViewsStates((prev) => ({ ...prev, showCalendar: true }));
   };
 
   const changeDate = (e: Date) => {
     setDate(e);
-    SetReservationData((prev) => ({ ...prev, reservationDate: e }));
+    SetReservationData((prev) => ({ ...prev, reservationDate: formatDate(e) }));
     SetNextStepData((prev) => ({
       ...prev,
       reservationDate: e.toLocaleDateString("es-ES", {
@@ -112,22 +108,42 @@ const AmenitiesInfo = () => {
 
   const onClickReservation = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    setViewsStates((prev) => ({...prev, showNextStep: true}))
-  };
-
-  const onClickConfirm = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    setViewsStates((prev) => ({...prev, showNextStep: false, showSuccessView: true}))
-    console.log(reservationData)
+    setViewsStates((prev) => ({ ...prev, showNextStep: true }));
   };
 
   const onClose = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     SetReservationData(initStateReservationData);
-    setViewsStates(initViewsState)
+    setViewsStates(initViewsState);
   };
 
-  const disabledDates = [new Date("2023-02-20"), new Date("2023-02-22"),new Date("2023-02-28"), new Date("2023-01-27")]
+  const onSuccess = () => {
+    queryClient.invalidateQueries(["amenityReservations"]);
+    setViewsStates((prev) => ({
+      ...prev,
+      showNextStep: false,
+      showSuccessView: true,
+    }));
+  };
+  const onError = () => {
+    setViewsStates((prev) => ({
+      ...prev,
+      showNextStep: false,
+      showErrorView: true,
+    }));
+  };
+  const { mutate, isLoading, error } = useCreateReservation(onSuccess, onError);
+
+  const onClickConfirm = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    mutate(reservationData);
+  };
+  const disabledDates = [
+    new Date("2023-02-20"),
+    new Date("2023-02-22"),
+    new Date("2023-02-28"),
+    new Date("2023-01-27"),
+  ];
 
   return (
     <div className="flex h-full w-full flex-col gap-6 px-6 pb-6 1048:flex-row">
@@ -138,7 +154,9 @@ const AmenitiesInfo = () => {
       <div className="h-full w-full rounded-2xl bg-white py-4 px-6">
         <h2
           className={`${
-            viewsStates.showSuccessView ? "hidden" : "flex"
+            viewsStates.showSuccessView || viewsStates.showErrorView
+              ? "hidden"
+              : "flex"
           } mb-3 text-2xl font-semibold`}
         >
           Realizar una reserva
@@ -151,7 +169,11 @@ const AmenitiesInfo = () => {
         >
           <div
             className={`${
-              viewsStates.showNextStep || viewsStates.showSuccessView ? "hidden" : "flex"
+              viewsStates.showNextStep ||
+              viewsStates.showSuccessView ||
+              viewsStates.showErrorView
+                ? "hidden"
+                : "flex"
             } flex-col items-center gap-2 font-Poppins`}
           >
             <label
@@ -183,9 +205,14 @@ const AmenitiesInfo = () => {
                 onChange={changeDate}
                 value={date}
                 onClickDay={onClickDay}
-                tileDisabled={({date}) => disabledDates.some(disabledDate => date.getFullYear() === disabledDate.getFullYear() &&
-                date.getMonth() === disabledDate.getMonth() &&
-                date.getDate() === disabledDate.getDate()+1)}
+                tileDisabled={({ date }) =>
+                  disabledDates.some(
+                    (disabledDate) =>
+                      date.getFullYear() === disabledDate.getFullYear() &&
+                      date.getMonth() === disabledDate.getMonth() &&
+                      date.getDate() === disabledDate.getDate() + 1
+                  )
+                }
               />
             ) : null}
             {viewsStates.showTurns ? (
@@ -207,7 +234,7 @@ const AmenitiesInfo = () => {
                         />
                         <label
                           htmlFor={schedule.value}
-                          className="flex h-20 w-[4.5rem] 450:w-24 cursor-pointer flex-col items-center justify-center gap-1 rounded-xl border-2 border-[#5F81FF] text-[10px] peer-checked:bg-[#C9E6FD] peer-disabled:border-[#B5B5B5] peer-disabled:bg-transparent peer-disabled:text-[#B5B5B5] lg:h-24 lg:w-36 lg:text-sm xl:w-24 xl:h-20 xl:text-xs 1440:w-36 1440:h-24 1440:text-sm"
+                          className="flex h-20 w-[4.5rem] cursor-pointer flex-col items-center justify-center gap-1 rounded-xl border-2 border-[#5F81FF] text-[10px] peer-checked:bg-[#C9E6FD] peer-disabled:border-[#B5B5B5] peer-disabled:bg-transparent peer-disabled:text-[#B5B5B5] 450:w-24 lg:h-24 lg:w-36 lg:text-sm xl:h-20 xl:w-24 xl:text-xs 1440:h-24 1440:w-36 1440:text-sm"
                         >
                           <span className="flex items-center justify-center text-xl">
                             {schedule.icon}
@@ -220,7 +247,11 @@ const AmenitiesInfo = () => {
                 </div>
                 <button
                   onClick={onClickReservation}
-                  disabled={reservationData.name === '' || reservationData.reservationDate === null || reservationData.turn === ''}
+                  disabled={
+                    reservationData.name === "" ||
+                    reservationData.reservationDate === null ||
+                    reservationData.turn === ""
+                  }
                   className="h-14 w-full rounded-xl bg-[#5F81FF] px-4 text-base font-medium text-white disabled:bg-[#D4D3F1]"
                 >
                   Reservar
@@ -274,7 +305,12 @@ const AmenitiesInfo = () => {
               </button>
             </div>
           </div>
-          <SuccessView nextStepData={nextStepData} onClose={onClose} viewsStates={viewsStates} />
+          <SuccessView
+            nextStepData={nextStepData}
+            onClose={onClose}
+            viewsStates={viewsStates}
+          />
+          <ErrorView onClose={onClose} viewsStates={viewsStates} />
         </form>
       </div>
     </div>

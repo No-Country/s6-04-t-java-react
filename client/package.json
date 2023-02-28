@@ -22,7 +22,8 @@
     "react-icons": "^4.6.0",
     "react-query": "^3.39.3",
     "react-redux": "^8.0.5",
-    "react-router-dom": "^6.4.3"
+    "react-router-dom": "^6.4.3",
+    "react-toastify": "^9.1.1"
   },
   "devDependencies": {
     "@savvywombat/tailwindcss-grid-areas": "^3.0.0",

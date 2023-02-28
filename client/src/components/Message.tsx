@@ -11,12 +11,14 @@ interface dataTypes {
 export default function Message(data: dataTypes) {
   const { type, from, message } = data;
   const dispatch = useDispatch();
+  console.log(data);
   return (
     <div className="relative flex flex-col gap-4">
       <div className="flex w-[100%] gap-1">
-        <div className="inline h-[2rem] rounded-[50%] bg-black p-2">A</div>
+        {/* <div className="inline h-[2rem] rounded-[50%] bg-black p-2">A</div> */}
         <div
           className={`
+        min-h-[5rem]
         sm:w-[90%]
         sm:rounded-[28px]
         sm:bg-[#5f82ff49]
@@ -35,23 +37,25 @@ export default function Message(data: dataTypes) {
           <h3 className="b-1 py-2 font-normal text-[1] text-black sm:hidden lg:block">
             De: {from}
           </h3>
-          <p className="text-sm font-normal text-[#6F6F6F]">{message}</p>
-          <button
+          <p className="break-words pr-1 text-sm font-normal text-[#6F6F6F]">
+            {message}
+          </p>
+          {/* <button
             className="absolute top-1 right-3 text-[1.3rem]"
             onClick={() => dispatch({ type: comu, payload: "testing" })}
           >
             :
-          </button>
+          </button> */}
         </div>
       </div>
-      <div className="flex gap-4 pl-6">
+      {/* <div className="flex gap-4 pl-6">
         <button className="flex h-[2.5rem] min-w-[6rem] items-center justify-center self-start rounded-[.5rem] bg-[#C9E6FD] pl-2 pr-2">
           <TiArrowLeft style={{ fontSize: "2rem" }} /> Responder
         </button>
         <button className="flex h-[2.5rem] min-w-[6rem] items-center justify-center self-start rounded-[.5rem] bg-[#C9E6FD] pl-2 pr-2">
           <TiArrowRight style={{ fontSize: "2rem" }} /> Reenviar
         </button>
-      </div>
+      </div> */}
     </div>
   );
 }

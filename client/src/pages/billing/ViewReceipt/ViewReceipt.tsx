@@ -20,9 +20,10 @@ const ViewReceipt = () => {
                 {/*content*/}
                 <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                   {/*header*/}
+                  <h2 className='mt-6 text-6xl'>Liveto</h2>
                   <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
-                    <h3 className="text-3xl font-semibold">
-                      Receipt
+                    <h3 className="text-2xl font-semibold">
+                      March, 01, 2020
                     </h3>
                     <button
                       className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
@@ -47,7 +48,7 @@ const ViewReceipt = () => {
                         <p
                           className="bg-gray-200 text-gray-700 mb-3 block w-full appearance-none rounded border py-3 px-4 leading-tight focus:bg-white focus:outline-none"
                           id="grid-first-name"
-                        >Jane</p>
+                        >Jose</p>
                       </div>
 
                       <div className="w-full px-3 md:w-1/2">
@@ -60,7 +61,7 @@ const ViewReceipt = () => {
                         <p
                           className="bg-gray-200 text-gray-700 mb-3 block w-full appearance-none rounded border py-3 px-4 leading-tight focus:bg-white focus:outline-none"
                           id="grid-first-name"
-                        >Doe</p>
+                        >Gavilanes</p>
                       </div>
                     </div>
                     <div className="-mx-3 mb-6 flex flex-wrap">
@@ -74,7 +75,7 @@ const ViewReceipt = () => {
                         <p
                           className="bg-gray-200 text-gray-700 mb-3 block w-full appearance-none rounded border py-3 px-4 leading-tight focus:bg-white focus:outline-none"
                           id="grid-first-name"
-                        >joseandresgavilanes2012@gmail.com</p>
+                        >joseandresgavilanes@gmail.com</p>
                       </div>
                     </div>
                     <div className="-mx-3 mb-2 flex flex-wrap">
@@ -88,7 +89,7 @@ const ViewReceipt = () => {
                         <p
                           className="bg-gray-200 text-gray-700 mb-3 block w-full appearance-none rounded border py-3 px-4 leading-tight focus:bg-white focus:outline-none"
                           id="grid-first-name"
-                        >Albuquerque</p>
+                        >Santander</p>
                       </div>
                       <div className="mb-6 w-full px-3 md:mb-0 md:w-1/3">
                         <label
@@ -112,7 +113,7 @@ const ViewReceipt = () => {
                         <p
                           className="bg-gray-200 text-gray-700 mb-3 block w-full appearance-none rounded border py-3 px-4 leading-tight focus:bg-white focus:outline-none"
                           id="grid-first-name"
-                        >1801011</p>
+                        >FRB1235476</p>
                       </div>
                     </div>
                   </form>

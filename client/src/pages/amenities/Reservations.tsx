@@ -1,4 +1,3 @@
-import { useGetReservation } from "../../hooks/useAmenity"
 import { ReservationList } from "../../models/Amenities"
 
 const reservationTurn = (turn: string) => {
@@ -60,8 +59,6 @@ const reservationNumberDay = (date: string) => {
     const numberDay = turnToDate.toLocaleDateString("es-ES", {day: "numeric"})
     return numberDay
     }
-
-    // const {data: reservations, isLoading} = useGetReservation()
 
   return (
     <div className="h-full  rounded-2xl bg-white py-4 px-6 ">

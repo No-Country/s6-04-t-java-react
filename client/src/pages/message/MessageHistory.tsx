@@ -20,7 +20,7 @@ export default function MessageHistory() {
 
   return (
     <div className="flex h-[80vh] w-[90%] flex-col justify-between overflow-y-hidden py-2 pl-4">
-      <div className=" h-[65%] w-[90%] overflow-y-scroll rounded-2xl border-none bg-white py-4 px-6">
+      <div className="custom-scroll-bar h-[65%] w-[90%]  rounded-2xl border-none bg-white py-4 px-6">
         <h2 className="mb-4 text-2xl font-semibold">
           Mensajes y Comunicaciones
         </h2>

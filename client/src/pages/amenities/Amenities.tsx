@@ -6,7 +6,7 @@ import {
 import { useState } from "react";
 import { Calendar } from "react-calendar";
 import "./styles.css";
-import { useCreateReservation } from "../../hooks/useAmenity";
+import { useCreateReservation, useGetReservation } from "../../hooks/useAmenity";
 import { amenities } from "./data";
 import SuccessView from "./SuccessView";
 import CommonSpaces from "./CommonSpaces";
@@ -132,7 +132,7 @@ const AmenitiesInfo = () => {
       showErrorView: true,
     }));
   };
-  const { mutate, isLoading, error } = useCreateReservation(onSuccess, onError);
+  const { mutate, isLoading: isLoadingCreateReserv, error } = useCreateReservation(onSuccess, onError);
 
   const onClickConfirm = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -145,11 +145,13 @@ const AmenitiesInfo = () => {
     new Date("2023-01-27"),
   ];
 
+  const {data: reservations, isLoading} = useGetReservation()
+
   return (
     <div className="flex h-full w-full flex-col gap-6 px-6 pb-6 1048:flex-row">
       <div className="flex w-full flex-col items-stretch gap-6 lg:max-w-xl 2xl:max-w-full">
         <CommonSpaces />
-        <Reservations />
+        <Reservations reservations={reservations!} isLoading={isLoading} />
       </div>
       <div className="h-full w-full rounded-2xl bg-white py-4 px-6">
         <h2
@@ -165,7 +167,6 @@ const AmenitiesInfo = () => {
         <form
           className="h-full w-full"
           action=""
-          onSubmit={() => console.log(reservationData)}
         >
           <div
             className={`${
@@ -301,7 +302,7 @@ const AmenitiesInfo = () => {
                 onClick={onClickConfirm}
                 className="w-full rounded-xl bg-[#5F81FF] text-white"
               >
-                Confirmar
+                {isLoadingCreateReserv ? 'Cargando...' : 'Confirmar'}
               </button>
             </div>
           </div>

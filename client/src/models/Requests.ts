@@ -2,7 +2,8 @@ export type ReportResponse = {
     creationDate?: string
     issue: string
     status: 'ON_REVIEW' | 'RESOLVED'
-    userId: number
+    userId: number,
+    id: number
 }
 
 export type ReportList = ReportResponse[]

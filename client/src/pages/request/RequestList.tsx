@@ -56,14 +56,14 @@ const RequestList = () => {
             <>
             {reports ? reports.map((report) => (
               <tr
-                key={report.userId + Math.floor(Math.random() * 300)}
+                key={report.id}
                 className="border-b border-border-rowTable"
               >
                 <td
                   className="p-2 text-start text-xs md:text-sm font-medium text-[#38BDF8]
               "
                 >
-                  {`#${report.userId}`}
+                  {`#${report.id}`}
                 </td>
                 <td className=" text-xs md:text-sm  font-normal text-vencimiento-gray">
                   {turnToDate(report.creationDate!)}

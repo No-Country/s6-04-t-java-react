@@ -146,18 +146,6 @@ const AmenitiesInfo = () => {
   ];
 
   const {data: reservations, isLoading} = useGetReservation()
-  console.log(reservations)
-
-  const filterUnavailableDates = async () => {
-    let date = reservations?.filter((reservation) => {
-      let dateToEval = reservation.reservationDate
-      if(reservation.reservationDate === reservation.reservationDate) {
-        console.log('son iguales')
-      }
-    })
-  }
-
-  filterUnavailableDates()
 
   return (
     <div className="flex h-full w-full flex-col gap-6 px-6 pb-6 1048:flex-row">
@@ -179,7 +167,6 @@ const AmenitiesInfo = () => {
         <form
           className="h-full w-full"
           action=""
-          onSubmit={() => console.log(reservationData)}
         >
           <div
             className={`${
@@ -315,7 +302,7 @@ const AmenitiesInfo = () => {
                 onClick={onClickConfirm}
                 className="w-full rounded-xl bg-[#5F81FF] text-white"
               >
-                Confirmar
+                {isLoadingCreateReserv ? 'Cargando...' : 'Confirmar'}
               </button>
             </div>
           </div>

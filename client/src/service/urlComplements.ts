@@ -11,6 +11,7 @@ export interface UrlComplement {
   accountById: (accountId: string) => string;
   reservationsAmenities: () => string;
   reservationsList: () => string;
+  reservationsByUser: () => string;
   reservationsById: (reservationId: string) => string;
   reportCreate: () => string;
   reportList: () => string;
@@ -32,6 +33,7 @@ const getURLComplement = () =>
     accountById: (accountId: string) => `/accounts/${accountId}`,
     reservationsAmenities: () => `/reservations/amenities`,
     reservationsList: () => `/reservations/list`,
+    reservationsByUser: () => `/reservations`,
     reservationsById: (reservationId: string) => `/reservations/${reservationId}`,
     reportCreate: () => `/reports/create`,
     reportList: () => `/reports/list`,

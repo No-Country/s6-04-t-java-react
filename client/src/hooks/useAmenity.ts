@@ -1,4 +1,4 @@
-import {useMutation, useQuery, useQueryClient} from 'react-query'
+import {useMutation, useQuery} from 'react-query'
 import { ReservationList, Reservation } from '../models/Amenities';
 import { getRequest, postRequest } from '../service/httpRequest';
 import { getURLComplement } from '../service/urlComplements';
@@ -11,7 +11,7 @@ type Query = {
 
 const getURL = getURLComplement();
 
-const getReservations = () => getRequest(getURL.reservationsList());
+const getReservations = () => getRequest(getURL.reservationsByUser());
 const createReservations = (data: Reservation) => postRequest(data, getURL.reservationsAmenities());
 
 

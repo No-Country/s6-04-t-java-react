@@ -19,6 +19,7 @@ public class MessageEntity {
     private Long id;
     private String subject;
     private String detail;
+    private String message;
 
     @CreationTimestamp
     @Column (name= "CREATION_DATE")
@@ -27,7 +28,5 @@ public class MessageEntity {
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private UserEntity user;
-
-
 
 }

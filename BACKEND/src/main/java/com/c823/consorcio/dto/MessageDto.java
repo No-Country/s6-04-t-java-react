@@ -8,8 +8,8 @@ import lombok.Data;
 public class MessageDto {
   private Long id;
   private String subject;
+  private String message;
   private String detail;
   private Long userId;
   private LocalDate creationDate;
-
 }

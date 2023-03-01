@@ -5,12 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="65b20930-cf3f-414f-8719-18905939e0cc" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/BACKEND/src/main/java/com/c823/consorcio/dto/AccountDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/BACKEND/src/main/java/com/c823/consorcio/dto/AccountDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BACKEND/src/main/java/com/c823/consorcio/entity/AccountEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/BACKEND/src/main/java/com/c823/consorcio/entity/AccountEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BACKEND/src/main/java/com/c823/consorcio/mapper/AccountMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/BACKEND/src/main/java/com/c823/consorcio/mapper/AccountMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BACKEND/src/main/java/com/c823/consorcio/mapper/ApartmentMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/BACKEND/src/main/java/com/c823/consorcio/mapper/ApartmentMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BACKEND/src/main/java/com/c823/consorcio/controller/MessageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/BACKEND/src/main/java/com/c823/consorcio/controller/MessageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BACKEND/src/main/java/com/c823/consorcio/dto/MessageBasicDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/BACKEND/src/main/java/com/c823/consorcio/dto/MessageBasicDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BACKEND/src/main/java/com/c823/consorcio/dto/MessageDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/BACKEND/src/main/java/com/c823/consorcio/dto/MessageDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BACKEND/src/main/java/com/c823/consorcio/entity/MessageEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/BACKEND/src/main/java/com/c823/consorcio/entity/MessageEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BACKEND/src/main/java/com/c823/consorcio/mapper/MessageMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/BACKEND/src/main/java/com/c823/consorcio/mapper/MessageMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BACKEND/src/main/resources/application-dev.properties" beforeDir="false" afterPath="$PROJECT_DIR$/BACKEND/src/main/resources/application-dev.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BACKEND/src/main/resources/application-prod.properties" beforeDir="false" afterPath="$PROJECT_DIR$/BACKEND/src/main/resources/application-prod.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BACKEND/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/BACKEND/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BACKEND/src/test/java/com/c823/consorcio/controller/auth/UserAuthControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/BACKEND/src/test/java/com/c823/consorcio/controller/UserAuthControllerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +24,22 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JpbToolWindowState">
+    <option name="myId2FirstActivated">
+      <map>
+        <entry key="com.haulmont.jpb.jpaInspector" value="true" />
+        <entry key="com.haulmont.jpb.jpaPalette" value="true" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+      </map>
+    </option>
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.haulmont.jpb.jpaInspector" value="false" />
+        <entry key="com.haulmont.jpb.jpaPalette" value="false" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="false" />
+      </map>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -38,7 +59,8 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true"
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "D:/Alkemy-backend-java/s6-04-t-java-react"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -51,5 +73,16 @@
       <updated>1675892442549</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

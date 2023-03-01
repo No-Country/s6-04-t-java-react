@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -35,7 +36,9 @@ public class MessageController {
     return ResponseEntity.ok().body(messagesauth);
   }
 
-  @GetMapping("{userId}")//TODO: solo administrador
+
+  @GetMapping("{userId}")
+  @PreAuthorize("hasAuthority('ADMIN')")
   public ResponseEntity<List<MessageDto>> getMessagesByUserId(@PathVariable Long userId){
    List<MessageDto> messages = this.messageService.getDetailsById(userId);
     return ResponseEntity.ok().body(messages);

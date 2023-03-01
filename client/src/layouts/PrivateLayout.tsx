@@ -20,7 +20,6 @@ const PrivateLayout = () => {
           <Outlet />
         </div>
       </div>
-      <Footer />
     </>
   );
 };

@@ -1,4 +1,7 @@
 export const formatDate = (date: Date) => {
+
+  //turn date into yyyy-MM-dd
+
     return [
       date.getFullYear(),
       ("0" + (date.getMonth() + 1)).slice(-2),

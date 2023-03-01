@@ -310,7 +310,7 @@ const AmenitiesInfo = () => {
             onClose={onClose}
             viewsStates={viewsStates}
           />
-          <ErrorView onClose={onClose} viewsStates={viewsStates} />
+          <ErrorView onClose={onClose} viewsStates={viewsStates} title='Error al reservar' description='Hubo un error al realizar la reserva, intente nuevamente.' />
         </form>
       </div>
     </div>

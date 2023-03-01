@@ -1,17 +1,17 @@
-import {useMutation, useQuery, useQueryClient} from 'react-query'
+import {useMutation, useQuery} from 'react-query'
 import { Report, ReportList } from '../models/Requests';
 import { getRequest, postRequest } from '../service/httpRequest';
+import { getURLComplement } from '../service/urlComplements';
 
 type Query = {
     onSuccess: () => void
     onError: () => void
 }
 
+const getURL = getURLComplement();
 
-
-
-const getReports = () => getRequest('/reports/list');
-const createReport = (data:Report) => postRequest(data,'/reports/create');
+const getReports = () => getRequest(getURL.reportList());
+const createReport = (data:Report) => postRequest(data, getURL.reportCreate());
 
 
 export const useGetReports = () =>
@@ -20,12 +20,12 @@ export const useGetReports = () =>
     onError: (error) => error
   })
 
-export const useMakeReservation = (data: Report) => {
-  const queryClient = useQueryClient()
-  return useMutation(() => createReport(data), {
-    onSuccess: () => {
-      queryClient.invalidateQueries(['getReports'])
-    },
-    onError: (error) =>  console.log(error)
-  })
-}
+export const useCreateReport = (
+  onSuccess: (data: {}) => void,
+  onError: (error: {}) => void
+) => {
+  return useMutation(["createReport"], createReport, {
+    onSuccess,
+    onError,
+  });
+};

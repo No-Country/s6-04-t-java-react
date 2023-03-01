@@ -30,11 +30,11 @@ export type Schedule = {
   };
   
   export type ViewState = {
-    showCalendar: boolean
-    showNextStep: boolean
-    showSuccessView: boolean
-    showErrorView: boolean
-    showTurns: boolean
+    showCalendar?: boolean
+    showNextStep?: boolean
+    showSuccessView?: boolean
+    showErrorView?: boolean
+    showTurns?: boolean
   }
   
   

@@ -1,8 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 import BillingForm from './BillingForm/BillingForm'
 import ViewReceipt from './ViewReceipt/ViewReceipt'
 
 const Billing = () => {
+
+
+  const [formName, setFormName] = useState("Jose")
+  const [formLastName, setFormLastName] = useState("Gavilanes")
+  const [formBank, setFormBank] = useState("Santander")
+  const [formEmail, setFormEmail] = useState("josegavilanes@gmail.com")
+  const [formPhone, setFormPhone] = useState("0995426348")
+  const [formVAT, setFormVAT] = useState("FRB1235476")
+  
+
+
+  const [cardName, setCardName] = useState("")
+  const [cardCode, setCardCode] = useState("")
+  const [cardDate, setCardDate] = useState("")
+  const [cardId, setCardId] = useState("")
+
+
   return (
     <>
     <div className="pl-6 flex flex-wrap -mx-3">
@@ -156,15 +173,14 @@ background: "linear-gradient(307deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 0%, rgba(0,
                 <ul className="flex flex-col pl-0 mb-0 rounded-lg">
                   <li className="relative flex p-6 mt-4 mb-2 border-0 rounded-b-inherit rounded-xl bg-gray-50">
                     <div className="flex flex-col">
-                      <h6 className="mb-4 leading-normal text-sm">Ethan James</h6>
-                      <span className="mb-2 leading-tight text-xs">Bank: <span className="font-semibold text-slate-700 sm:ml-2">Fiber Notion</span></span>
-                      <span className="mb-2 leading-tight text-xs">Email Address: <span className="font-semibold text-slate-700 sm:ml-2">ethan@fiber.com</span></span>
-                      <span className="mb-2 leading-tight text-xs">Phone Number: <span className="font-semibold text-slate-700 sm:ml-2">0995426348</span></span>
-                      <span className="leading-tight text-xs">VAT Number: <span className="font-semibold text-slate-700 sm:ml-2">FRB1235476</span></span>
+                      <h6 className="mb-4 leading-normal text-sm"> <span>{formName}</span> <span>{formLastName}</span>  </h6>
+                      <span className="mb-2 leading-tight text-xs">Bank: <span className="font-semibold text-slate-700 sm:ml-2"> {formBank} </span></span>
+                      <span className="mb-2 leading-tight text-xs">Email Address: <span className="font-semibold text-slate-700 sm:ml-2"> {formEmail} </span></span>
+                      <span className="mb-2 leading-tight text-xs">Phone Number: <span className="font-semibold text-slate-700 sm:ml-2"> {formPhone} </span></span>
+                      <span className="leading-tight text-xs">VAT Number: <span className="font-semibold text-slate-700 sm:ml-2"></span> {formVAT} </span>
                     </div>
                     <div className="ml-auto text-right">
-                      <a className="relative z-10 inline-block px-4 py-3 mb-0 font-bold text-center text-transparent uppercase align-middle transition-all border-0 rounded-lg shadow-none cursor-pointer leading-pro text-xs ease-soft-in bg-150 bg-gradient-to-tl from-red-600 to-rose-400 hover:scale-102 active:opacity-85 bg-x-25 bg-clip-text" href="javascript:;"><i className="mr-2 far fa-trash-alt bg-150 bg-gradient-to-tl from-red-600 to-rose-400 bg-x-25 bg-clip-text"></i>Delete</a>
-                      <a className="inline-block px-4 py-3 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer leading-pro text-xs ease-soft-in bg-150 hover:scale-102 active:opacity-85 bg-x-25 text-slate-700" href="javascript:;"><BillingForm/></a>
+                      <a className="inline-block px-4 py-3 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer leading-pro text-xs ease-soft-in bg-150 hover:scale-102 active:opacity-85 bg-x-25 text-slate-700" href="javascript:;"><BillingForm setFormName={setFormName} formName={formName} formLastName={formLastName} setFormLastName={setFormLastName}  formBank={formBank} setFormBank={setFormBank} formEmail={formEmail} setFormEmail={setFormEmail} formPhone={formPhone} setFormPhone={setFormPhone} formVAT={formVAT} setFormVAT={setFormVAT} /></a>
                     </div>
                   </li>
                 </ul>

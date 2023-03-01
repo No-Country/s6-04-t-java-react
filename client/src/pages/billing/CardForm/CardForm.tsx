@@ -1,9 +1,7 @@
-import React, { useState } from "react";
-import { useForm } from "react-hook-form";
+import React from 'react'
 
-const BillingForm = ({setFormName, formName, formLastName, setFormLastName, formBank, setFormBank, formEmail, setFormEmail, formPhone, setFormPhone, formVAT, setFormVAT }) => {
-  const [showModal, setShowModal] = React.useState(false);
-
+const CardForm = () => {
+    const [showModal, setShowModal] = React.useState(false);
   return (
     <>
       <button
@@ -164,7 +162,7 @@ const BillingForm = ({setFormName, formName, formLastName, setFormLastName, form
         </>
       ) : null}
     </>
-  );
-};
+  )
+}
 
-export default BillingForm;
+export default CardForm

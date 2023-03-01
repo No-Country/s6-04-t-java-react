@@ -67,7 +67,7 @@ const reservationNumberDay = (date: string) => {
             {isLoading ?
              <div className="text-center mt-3">Cargando...</div>
             :
-            <>
+            <div style={{height:"215px"}}>
             {reservations ? (
               reservations.map((reservation) => (
                 <div
@@ -97,7 +97,7 @@ const reservationNumberDay = (date: string) => {
                 No tienes ninguna reserva en tu calendario
               </p>
             )}
-            </>
+            </div>
             }
           </div>
         </div>

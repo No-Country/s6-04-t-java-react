@@ -11,6 +11,7 @@ import com.c823.consorcio.repository.IUserRepository;
 import com.c823.consorcio.service.IAmenitiesService;
 import java.util.List;
 import java.util.Objects;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -34,7 +35,7 @@ public class AmenitiesServiceImpl implements IAmenitiesService {
     ReservationEntity entity = amenitiesMap.amenitieDto2Entity(reservationDto,userId);
     reservations.forEach(reservation -> {
       if(reservations.stream().anyMatch(i -> reservationDto.getReservationDate().equals(i.getReservationDate()) )
-      && reservations.stream().anyMatch(i -> reservationDto.getTur().equals(i.getTurn()))){
+              && reservations.stream().anyMatch(i -> reservationDto.getTurn().equals(i.getTurn()))){
         throw new ParamNotFound("The day and turn already in use");
       }
     });
@@ -46,14 +47,13 @@ public class AmenitiesServiceImpl implements IAmenitiesService {
 
   @Override
   public List<ReservationBasicDto> getReservations() {
-
     return amenitiesMap.amenitieEntityList2DtoList(iReservationRepository.findAll());
   }
 
   @Override
   public ReservationDto getDetailsById(Long reservationId) {
     ReservationEntity reservation = iReservationRepository.findById(reservationId).orElseThrow(
-        ()-> new ParamNotFound("ID do not exist"));
+            ()-> new ParamNotFound("ID do not exist"));
     String email = SecurityContextHolder.getContext().getAuthentication().getName();
     UserEntity user = userRepository.findByEmail(email);
     if(!Objects.equals(user.getUserId(),reservation.getUserEntity().getUserId())){
@@ -62,4 +62,12 @@ public class AmenitiesServiceImpl implements IAmenitiesService {
     ReservationDto result = amenitiesMap.amenitieEntity2Dto(reservation);
     return result;
   }
+
+  @Override
+  public List<ReservationBasicDto> getUserReservations(String email) {
+    UserEntity user = userRepository.findByEmail(email);
+    List<ReservationEntity> userReservations = iReservationRepository.findByUserEntity(user);
+    return amenitiesMap.amenitieEntityList2DtoList(userReservations);
+  }
+
 }

@@ -2,6 +2,7 @@ package com.c823.consorcio.service;
 
 import com.c823.consorcio.dto.ReservationBasicDto;
 import com.c823.consorcio.dto.ReservationDto;
+
 import java.util.List;
 
 public interface IAmenitiesService {
@@ -11,4 +12,9 @@ public interface IAmenitiesService {
   List<ReservationBasicDto> getReservations();
 
   ReservationDto getDetailsById(Long reservationId);
+
+  List<ReservationBasicDto> getUserReservations(String username);
+
+
+
 }

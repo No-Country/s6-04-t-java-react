@@ -33,9 +33,6 @@ public class UserAuthController {
   private UserDetailsCustomService userDetailsServices;
 
 
-
-
-
   @PostMapping("/register")
   public ResponseEntity<ResponseUserDto> signUp(@Valid @RequestBody ResponseUserDto user) {
     ResponseUserDto userRegister = this.userDetailsServices.save(user);
@@ -52,7 +49,6 @@ public class UserAuthController {
 
   @PostMapping("/login")
   public ResponseEntity<AuthenticationResponse> signIn(@RequestBody AuthenticationRequest authenticationRequest) {
-
     AuthenticationResponse response = userDetailsServices.signIn(authenticationRequest);
     return ResponseEntity.status(HttpStatus.OK).body(response);
   }

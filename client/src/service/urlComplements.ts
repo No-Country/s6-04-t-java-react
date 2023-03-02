@@ -4,7 +4,7 @@ export interface UrlComplement {
   billPayment: () => string;
   sendPayment: () => string;
   balance: () => string;
-  messagesAuth: () => string;
+  messagesGetAll: () => string;
   messagesByUserId: (userId: string) => string;
   messagesByMessageId: (messageId: string) => string;
   messagesSend: () => string;
@@ -25,7 +25,7 @@ const getURLComplement = () =>
     billPayment: () => `/transactions/billPayment`,
     sendPayment: () => `/transactions/sendPayment`,
     balance: () => `/accounts/balance`,
-    messagesAuth: () => `/messages`,
+    messagesGetAll: () => `/messages`,
     messagesByUserId: (userId: string) => `/messages/${userId}`,
     messagesByMessageId: (messageId: string) => `/messages/${messageId}`,
     messagesSend: () => `/messages/send`,

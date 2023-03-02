@@ -1,5 +1,5 @@
 export interface MenssageSchema{
-    type:string;
-    from:string;
+    subject:string;
+    userName:string;
     message:string;
 }

@@ -4,11 +4,13 @@ import jwt_decode from "jwt-decode";
 import { getURLComplement } from "../../service/urlComplements";
 import { toast } from "react-toastify";
 import { MenssageSchema } from "../../models/Message";
-const MessageSend = () => {
+import axios from "axios";
+import { postRequest } from "../../service/httpRequest";
+const MessageSend = ({ setPost }) => {
   const { checkUserToken } = useAuth();
   const decoded: any = jwt_decode(checkUserToken);
   const apiURL: string = import.meta.env.VITE_API_BASE_URL;
-
+  const urlSendMessage = getURLComplement().messagesSend();
   const SendMessage = async (e: any) => {
     e.preventDefault();
     const messageValue: string = e.target.message.value.trim();
@@ -22,18 +24,25 @@ const MessageSend = () => {
       return;
     }
 
-    if (selectValue === "") {
+    if (selectValue === "Tipo de mensaje") {
       toast.warn("Ingresa el tipo de mensaje");
       return;
     }
+    console.log(user);
 
     const dataMessage: MenssageSchema = {
-      type: selectValue,
-      from: user || "Unknown",
+      subject: selectValue,
+      userName: user || "Unknown",
       message: messageValue,
     };
     console.log(dataMessage);
-    // axios.post("/messages/")({});
+    try {
+      postRequest(dataMessage, urlSendMessage);
+      toast.success("Mensaje enviado.");
+      setPost(true);
+    } catch (error) {
+      toast.error("Ha ocurridop un error en el servido, vuelve a intentarlo.");
+    }
   };
   return (
     <div className="relative flex h-[30%] items-end">
@@ -48,12 +57,11 @@ const MessageSend = () => {
           className="min-h-full w-full rounded-2xl py-2 pl-4 pb-10 text-[1rem] outline-none"
         ></textarea>
         <select
-          value={"Tipo de mensaje"}
           name="selecType"
           id="selectType"
           className="absolute bottom-4 left-[8rem] rounded-[1rem] bg-[#C9E6FD] p-2 "
         >
-          <option key={0} value="Tipo de mensaje" disabled>
+          <option key={0} value="Tipo de mensaje" disabled selected>
             Tipo de mensaje
           </option>
           <option key={1} value="Votacion-Activa">

@@ -3,19 +3,17 @@ import "../pages/message/classMessage.css";
 import { comu } from "../store/messageReducer/message";
 import { TiArrowLeft, TiArrowRight } from "react-icons/ti";
 interface dataTypes {
-  type: string;
-  from: string;
+  subject: string;
+  userName: string;
   message: string;
 }
 
 export default function Message(data: dataTypes) {
-  const { type, from, message } = data;
-  const dispatch = useDispatch();
   console.log(data);
+  const { subject, userName, message } = data;
   return (
     <div className="relative flex flex-col gap-4">
       <div className="flex w-[100%] gap-1">
-        {/* <div className="inline h-[2rem] rounded-[50%] bg-black p-2">A</div> */}
         <div
           className={`
         min-h-[5rem]
@@ -24,28 +22,22 @@ export default function Message(data: dataTypes) {
         sm:bg-[#5f82ff49]
         lg:bg-white
         ${
-          type === "Votacion-Activa"
+          subject === "Votacion-Activa"
             ? "lg:border-l-[.7rem] lg:border-l-[#4F3FF0]"
             : ""
         } relative py-4 pl-4 lg:rounded-2xl lg:border-2 lg:border-solid lg:border-gray`}
         >
           <div
-            className={`inline justify-center rounded-[2rem]   p-1 px-2 lg:border-2 ${type}`}
+            className={`inline justify-center rounded-[2rem]   p-1 px-2 lg:border-2 ${subject}`}
           >
-            <span className="">{type}</span>
+            <span className="">{subject}</span>
           </div>
           <h3 className="b-1 py-2 font-normal text-[1] text-black sm:hidden lg:block">
-            De: {from}
+            De: {userName}
           </h3>
           <p className="break-words pr-1 text-sm font-normal text-[#6F6F6F]">
             {message}
           </p>
-          {/* <button
-            className="absolute top-1 right-3 text-[1.3rem]"
-            onClick={() => dispatch({ type: comu, payload: "testing" })}
-          >
-            :
-          </button> */}
         </div>
       </div>
       {/* <div className="flex gap-4 pl-6">

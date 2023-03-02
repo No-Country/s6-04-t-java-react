@@ -15,6 +15,8 @@ import Statistics from "./pages/statistics/Statistics";
 import Billing from "./pages/billing/Billing";
 import { QueryClient, QueryClientProvider } from "react-query";
 import SignUp from "./pages/signup/SignUp";
+import { getURLComplement } from "./service/urlComplements";
+import axios from "axios";
 
 function App() {
   const navigate = useNavigate();
@@ -25,6 +27,7 @@ function App() {
     checkBroadcastToLogOutInAllTabs((url: any) => navigate(url));
   }, []);
   const queryclient = new QueryClient();
+
   return (
     <AuthContext.Provider
       value={{ checkUserToken, isLoadingUser, setIsLoadingUser }}
@@ -32,7 +35,7 @@ function App() {
       <QueryClientProvider client={queryclient}>
         <Routes>
           <Route path="/" element={<Login />} />
-          <Route path="/signup" element={<SignUp/>} />
+          <Route path="/signup" element={<SignUp />} />
           <Route element={<PrivateLayout />}>
             <Route path="/request" element={<Request />} />
             <Route path="/main" element={<Main />} />

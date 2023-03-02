@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import BillingForm from './BillingForm/BillingForm'
 import ViewReceipt from './ViewReceipt/ViewReceipt'
+import BillingItem from './BillingItem/BillingItem'
+import InvoicesItem from './InvoicesItem/InvoicesItem'
 
 const Billing = () => {
 
@@ -12,12 +14,121 @@ const Billing = () => {
   const [formPhone, setFormPhone] = useState("0995426348")
   const [formVAT, setFormVAT] = useState("FRB1235476")
   
+  const cardData = 
+  {
+    id: 1,
+    cardId: "4562 1122 4594 7852",
+    name: "Alexander Ramirez",
+    date: "11/22",
+    url:
+      "https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png",
+  }
 
+const billingData = [
+  {
+    id:1,
+    formName: "Alexander",
+    formLastName: "Ramirez",
+    formBank: "Santander",
+    formEmail: "josegavilanes@gmail.com",
+    formPhone: "0995426348",
+    formVAT: "FRB1235476",
+    
+    
+  },
+  {
+    id:2,
+    formName: "Alexander",
+    formLastName: "Ramirez",
+    formBank: "Pacifico",
+    formEmail: "alexander@gmail.com",
+    formPhone: "0995426654",
+    formVAT: "RAG1234176",
+    
+    
+  },
+]
 
-  const [cardName, setCardName] = useState("")
-  const [cardCode, setCardCode] = useState("")
-  const [cardDate, setCardDate] = useState("")
-  const [cardId, setCardId] = useState("")
+const invoicesData = [
+
+  {
+    id:1,
+    date: "March, 01, 2023",
+    code: "#YS-415646",
+    amount: 180,
+    name: "josegavilanes@gmail.com",
+    lastname: "0995426348",
+    email: "FRB1235476",
+    bank: "Santander",
+    phone: "0995426021",
+    varCode: "FRB1235476",
+    
+    
+    
+  },
+
+  {
+    id:2,
+    date: "April, 14, 2022",
+    code: "#MS-415646",
+    amount: 180,
+    name: "josegavilanes@gmail.com",
+    lastname: "0995426348",
+    email: "FRB1235476",
+    bank: "Santander",
+    phone: "0995426021",
+    varCode: "FRB1235476",
+    
+    
+    
+  },  {
+    id:3,
+    date: "February, 01, 2021",
+    code: "#QP-155646",
+    amount: 280,
+    name: "josegavilanes@gmail.com",
+    lastname: "0995426348",
+    email: "FRB1235476",
+    bank: "Santander",
+    phone: "0995426021",
+    varCode: "FRB1235476",
+    
+    
+    
+  },
+
+  {
+    id:4,
+    date: "April, 04, 2022",
+    code: "#WS-415612",
+    amount: 200,
+    name: "Jose",
+    lastname: "Gavilanes",
+    email: "josegavilanes@gmail.com",
+    bank: "Santander",
+    phone: "0995426021",
+    varCode: "FRB1235476",
+    
+    
+    
+  },
+
+  {
+    id:5,
+    date: "September, 20, 2022",
+    code: "#ER-413646",
+    amount: 380,
+    name: "josegavilanes@gmail.com",
+    lastname: "0995426348",
+    email: "FRB1235476",
+    bank: "Santander",
+    phone: "0995426021",
+    varCode: "FRB1235476",
+    
+    
+    
+  },
+]
 
 
   return (
@@ -34,20 +145,20 @@ background: "linear-gradient(307deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 0%, rgba(0,
                     <span className="absolute top-0 left-0 w-full h-full bg-center bg-cover bg-gradient-to-tl from-gray-900 to-slate-800 opacity-80"></span>
                     <div className="relative z-10 flex-auto p-4">
                       <i className="p-2 text-white fas fa-wifi"></i>
-                      <h5 className="pb-2 mt-6 mb-12 text-white">4562&nbsp;&nbsp;&nbsp;1122&nbsp;&nbsp;&nbsp;4594&nbsp;&nbsp;&nbsp;7852</h5>
+                      <h5 className="pb-2 mt-6 mb-12 text-white">{cardData.cardId} </h5>
                       <div className="flex">
                         <div className="flex">
                           <div className="mr-6">
                             <p className="mb-0 leading-normal text-white text-sm opacity-80">Card Holder</p>
-                            <h6 className="mb-0 text-white">Jack Peterson</h6>
+                            <h6 className="mb-0 text-white">{cardData.name}</h6>
                           </div>
                           <div>
                             <p className="mb-0 leading-normal text-white text-sm opacity-80">Expires</p>
-                            <h6 className="mb-0 text-white">11/22</h6>
+                            <h6 className="mb-0 text-white">{cardData.date}</h6>
                           </div>
                         </div>
                         <div className="flex items-end justify-end w-1/5 ml-auto">
-                          <img className="w-3/5 mt-2" src="https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png" alt="logo" />
+                          <img className="w-3/5 mt-2" src={cardData.url} alt="logo" />
                         </div>
                       </div>
                     </div>
@@ -144,19 +255,11 @@ background: "linear-gradient(307deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 0%, rgba(0,
               </div>
               <div className="flex-auto p-4 pb-0">
                 <ul className="flex flex-col pl-0 mb-0 rounded-lg">
-                  <li className="relative flex justify-between px-4 py-2 pl-0 mb-2 bg-white border-0 rounded-t-inherit text-inherit rounded-xl">
-                    <div className="flex flex-col">
-                      <h6 className="mb-1 font-semibold leading-normal text-sm text-slate-700">March, 01, 2020</h6>
-                      <span className="leading-tight text-xs">#MS-415646</span>
-                    </div>
-                    <div className="flex items-center leading-normal text-sm">
-                      $180
-                      <button className="inline-block px-0 py-3 mb-0 ml-6 font-bold leading-normal text-center uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer ease-soft-in bg-150 text-sm active:opacity-85 hover:scale-102 tracking-tight-soft bg-x-25 text-slate-700"><ViewReceipt/> </button>
-                    </div>
-                  </li>
-                  
-                  
-                  
+                  {
+                    invoicesData.map((data) => 
+                      <InvoicesItem data={data} index={data.id} />
+                    )
+                  }
                 </ul>
               </div>
             </div>
@@ -171,18 +274,9 @@ background: "linear-gradient(307deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 0%, rgba(0,
               </div>
               <div className="flex-auto p-4 pt-6">
                 <ul className="flex flex-col pl-0 mb-0 rounded-lg">
-                  <li className="relative flex p-6 mt-4 mb-2 border-0 rounded-b-inherit rounded-xl bg-gray-50">
-                    <div className="flex flex-col">
-                      <h6 className="mb-4 leading-normal text-sm"> <span>{formName}</span> <span>{formLastName}</span>  </h6>
-                      <span className="mb-2 leading-tight text-xs">Bank: <span className="font-semibold text-slate-700 sm:ml-2"> {formBank} </span></span>
-                      <span className="mb-2 leading-tight text-xs">Email Address: <span className="font-semibold text-slate-700 sm:ml-2"> {formEmail} </span></span>
-                      <span className="mb-2 leading-tight text-xs">Phone Number: <span className="font-semibold text-slate-700 sm:ml-2"> {formPhone} </span></span>
-                      <span className="leading-tight text-xs">VAT Number: <span className="font-semibold text-slate-700 sm:ml-2"></span> {formVAT} </span>
-                    </div>
-                    <div className="ml-auto text-right">
-                      <a className="inline-block px-4 py-3 mb-0 font-bold text-center uppercase align-middle transition-all bg-transparent border-0 rounded-lg shadow-none cursor-pointer leading-pro text-xs ease-soft-in bg-150 hover:scale-102 active:opacity-85 bg-x-25 text-slate-700" href="javascript:;"><BillingForm setFormName={setFormName} formName={formName} formLastName={formLastName} setFormLastName={setFormLastName}  formBank={formBank} setFormBank={setFormBank} formEmail={formEmail} setFormEmail={setFormEmail} formPhone={formPhone} setFormPhone={setFormPhone} formVAT={formVAT} setFormVAT={setFormVAT} /></a>
-                    </div>
-                  </li>
+                  {
+                    billingData.map((data) => <BillingItem data={data} index={data.id} /> )
+                  }
                 </ul>
               </div>
             </div>

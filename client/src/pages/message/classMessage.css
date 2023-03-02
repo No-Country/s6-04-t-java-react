@@ -2,8 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
-::-webkit-scrollbar {
-  width: 0px;
+
+.custom-scroll-bar {
+  overflow-y: auto;
+  white-space: nowrap;
+}
+
+.custom-scroll-bar::-webkit-scrollbar {
+   width: 10px;
+}
+
+.custom-scroll-bar::-webkit-scrollbar-track {
+  background: rgba(213, 209, 218, 0.987);
+  border-radius: 8px;
+}
+.custom-scroll-bar::-webkit-scrollbar-thumb {
+  background-color: #6176c3;
+  border-radius: 8px;
 }
 
 @layer components {

@@ -1,5 +1,4 @@
-import { useGetReservation } from "../../hooks/useAmenity"
-
+import { ReservationList } from "../../models/Amenities"
 
 const reservationTurn = (turn: string) => {
     switch (turn) {
@@ -41,8 +40,13 @@ const reservationAmenity = (amenity: string) => {
 
 }
 
+type Props = {
+  reservations: ReservationList
+  isLoading: boolean
+}
 
-const Reservations = () => {
+
+const Reservations = ({reservations, isLoading}: Props) => {
 
 const reservationMonth = (date: string) => {
     const turnToDate = new Date(date)
@@ -56,20 +60,18 @@ const reservationNumberDay = (date: string) => {
     return numberDay
     }
 
-    const {data: reservations, isLoading} = useGetReservation()
-
   return (
     <div className="h-full  rounded-2xl bg-white py-4 px-6 ">
           <h2 className="mb-3 text-2xl font-semibold">Mis reservas</h2>
-          <div className="flex max-h-96 flex-col gap-2 overflow-scroll">
+          <div className="custom-scroll-bar flex max-h-96 flex-col gap-2">
             {isLoading ?
              <div className="text-center mt-3">Cargando...</div>
             :
-            <>
+            <div style={{height:"215px"}}>
             {reservations ? (
               reservations.map((reservation) => (
                 <div
-                  key={reservation.reservationDate}
+                  key={reservation.reservationDate + reservation.reservationId}
                   className="flex w-full items-center justify-start gap-6 rounded-2xl bg-[#F4F5FA] px-3 py-2 font-Poppins"
                   >
                   <div className="w-16 bg-white text-center">
@@ -85,7 +87,7 @@ const reservationNumberDay = (date: string) => {
                       {reservationAmenity(reservation.name)}
                     </h3>
                     <p className="text-sm font-normal text-[#6F6F6F]">
-                      {reservationTurn(reservation.tunr)}
+                      {reservationTurn(reservation.turn)}
                     </p>
                   </div>
                 </div>
@@ -95,7 +97,7 @@ const reservationNumberDay = (date: string) => {
                 No tienes ninguna reserva en tu calendario
               </p>
             )}
-            </>
+            </div>
             }
           </div>
         </div>

@@ -1,6 +1,6 @@
 package com.c823.consorcio.service.Impl;
 
-import com.c823.consorcio.dto.NewPreferenceDTO;
+/*import com.c823.consorcio.dto.NewPreferenceDTO;
 import com.c823.consorcio.dto.TransactionDto;
 import com.c823.consorcio.entity.UserEntity;
 import com.c823.consorcio.repository.IUserRepository;
@@ -25,7 +25,7 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 
-/*public class PaymentServiceImpl implements IPaymentService{
+public class PaymentServiceImpl implements IPaymentService{
 
     @Value("${access.token}")
     private String accessToken;

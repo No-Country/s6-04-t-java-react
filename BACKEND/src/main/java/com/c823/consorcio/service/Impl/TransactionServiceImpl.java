@@ -60,9 +60,6 @@ public class TransactionServiceImpl implements ITransactionService {
     TransactionDto send = new TransactionDto();
     send.setAmount(billPaymentDto.getAmount());
     send.setDescription(billPaymentDto.getDescription());
-    if(send.getDescription() == null) {
-      throw new ParamNotFound("description cannot be empty");
-    }
     send.setAccountId(account.getAccountId());
     send.setDestinationAccountId(receive.getAccountId());
     send.setType(TypeTransaction.BILLPAYMENT);

@@ -31,6 +31,7 @@ public class ReportMap {
   public ReportDTO reportEntity2Dto(ReportEntity entitySaved) {
     ReportDTO dto =  new ReportDTO();
     dto.setUserId(entitySaved.getUser().getUserId());
+    dto.setUserName(entitySaved.getUser().getFirstName());
     dto.setIssue(entitySaved.getIssue());
     dto.setDetail(entitySaved.getDetail());
     dto.setPlace(entitySaved.getPlace());
@@ -49,10 +50,12 @@ public class ReportMap {
 
   private ReportBasicDto reportEntity2BasicDto(ReportEntity entity) {
     ReportBasicDto dto = new ReportBasicDto();
+    dto.setId(entity.getReportId());
     dto.setCreationDate(entity.getCreationDate());
     dto.setIssue(entity.getIssue());
     dto.setStatus(entity.getStatus());
     dto.setUserId(entity.getUser().getUserId());
+    dto.setUserName(entity.getUser().getFirstName());
     return dto;
   }
 }
